@@ -5,8 +5,10 @@ import Plants from './Plants';
 import Articles from './Articles';
 import Logout from './Logout';
 import {Routes, Route} from 'react-router-dom';
+import {useEffect} from 'react';
 
 function App() {
+
   return (
     <div className="App">
         <NavBar />
