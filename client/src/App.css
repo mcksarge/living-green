@@ -38,3 +38,53 @@
   text-align: left;
   margin: auto;
 }
+
+/*********************/
+
+/* Plants */
+
+#plant-card-cont {
+  border: 10px solid;
+  border-top-color: #945620;
+  border-left-color: #5D3614;
+  border-right-color: #5D3614;
+  border-bottom-color: #945620;
+  width: 75%;
+  height: 50em;
+  margin: auto;
+  padding: 10px;
+}
+
+.plant-card {
+  border: 2px solid black;
+  width: 10em;
+  padding: 5px;
+}
+
+.plant-card:hover {
+  background-color: green;
+}
+
+.plant-card:active {
+  background-color: greenyellow;
+}
+
+.plant-card-img {
+  width: 75%;
+}
+
+#plant-cont-buttons {
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+  margin: auto;
+}
+
+.plant-button {
+  padding: 10px 50px;
+  font-size: large;
+}
+
+
+/*************/
