@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import PlantCard from './PlantCard';
+import CreatePlant from './CreatePlant';
 
 function Plants () {
     const [plants, setPlants] = useState([])
@@ -49,7 +50,7 @@ function Plants () {
             <h2>Plant-O-Pedia</h2>
             <div id="plant-cont-buttons">
                 <button className="plant-button">Filter</button>
-                <button className="plant-button" onClick={handleAddPlant}>Add Plant</button>
+                <CreatePlant />
                 <button className="plant-button">Search</button>
             </div>
             <div id="plant-card-cont">
