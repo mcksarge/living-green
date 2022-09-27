@@ -4,15 +4,6 @@ import CreatePlant from './CreatePlant';
 
 function Plants () {
     const [plants, setPlants] = useState([])
-    const [formData, setFormData] = useState({
-        name: "",
-        soil: "",
-        image: "",
-        light: "",
-        water: "",
-        climate: "",
-        summary: ""
-    })
 
     //Fetches Plants
     useEffect(() => {
@@ -20,18 +11,6 @@ function Plants () {
         .then((res) => res.json())
         .then((data) => setPlants(data))
     }, [])
-
-    function handleAddPlant(e) {
-        fetch("http://localhost:3000/plants", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-
-            })
-        })
-    }
 
     //Maps plants to PlantCard
     const allPlants = plants.map((plant, i) => {
