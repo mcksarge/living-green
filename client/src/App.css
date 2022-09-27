@@ -13,11 +13,14 @@
   align-items: center;
   background-color: seagreen;
   font-size: 20px;
+  margin-bottom: 30px;
 }
 
 #navbar-title {
   color: burlywood;
   margin: 1em;
+  font-size: 40px;
+  font-weight: 1000;
 }
 
 #navbar-links {
@@ -26,8 +29,17 @@
 
 .navlink {
   padding: .50em;
+  margin-right: 5px;
+  background-color: rgb(99, 53, 25);
+  color: white;
+  font-size: larger;
+  text-decoration: none;
 }
 
+.navlink:hover {
+  background-color: #945620;
+  color: white;
+}
 
 /* *********** */
 
@@ -63,6 +75,7 @@
 
 .plant-card:hover {
   background-color: green;
+  cursor: pointer;
 }
 
 .plant-card:active {
