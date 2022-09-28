@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function CreatePlant() {
+function CreatePlant({climates}) {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("")
   const [soil, setSoil] = useState("")
@@ -12,7 +12,7 @@ function CreatePlant() {
   const [climate, setClimate] = useState("")
   const [summary, setSummary] = useState("")
 
-
+  // Shows or hides the popup window
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -20,7 +20,7 @@ function CreatePlant() {
   function handleAddPlant(e) {
     const plant = {"name": name, "soil": soil, "image": image, "light": light, "water": water, "climate": climate, "summary": summary}
     console.log(plant)
-}
+  }
 
 
   return (
@@ -96,9 +96,7 @@ function CreatePlant() {
                     </label>
                     <br></br>
                     <select name="climate" onChange={(e) => setClimate(e.target.value)} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                        <option>New Mexico</option>
-                        <option>Missouri</option>
-                        <option>Texas</option>
+                      {climates.map((climate, i) => <option key={i} value={climate.id}>{climate.name}</option>)}
                     </select>
                 </div>
                 <div className="plant-form-cont">
