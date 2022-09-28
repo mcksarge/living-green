@@ -4,15 +4,13 @@ import Modal from 'react-bootstrap/Modal';
 
 function CreatePlant() {
   const [show, setShow] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    soil: "",
-    image: "",
-    light: "",
-    water: "",
-    climate: "",
-    summary: ""
-})
+  const [name, setName] = useState("")
+  const [soil, setSoil] = useState("")
+  const [image, setImage] = useState("")
+  const [light, setLight] = useState("")
+  const [water, setWater] = useState("")
+  const [climate, setClimate] = useState("")
+  const [summary, setSummary] = useState("")
 
 
   const handleClose = () => setShow(false);
@@ -20,8 +18,10 @@ function CreatePlant() {
 
   // Add Plant to catalog
   function handleAddPlant(e) {
-    console.log(formData)
+    const plant = {"name": name, "soil": soil, "image": image, "light": light, "water": water, "climate": climate, "summary": summary}
+    console.log(plant)
 }
+
 
   return (
     <>
@@ -42,60 +42,60 @@ function CreatePlant() {
             <form className="add-plant-form">
                 <div className="plant-form-cont">
                     <div className="plant-form-label">
-                      <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                      <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                           Name*
                       </label>
                     </div>
                     <div className="plant-form-input">
-                      <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" placeholder="Plant Name" />
+                      <input name="name" onChange={(e) => setName(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="text" placeholder="Plant Name" />
                     </div>
                 </div>
                 <div className="plant-form-cont">
                     <div className="plant-form-label">
-                      <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
+                      <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" >
                           Soil*
                       </label>
                     </div>
                     <div className="plant-form-input">
-                      <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" placeholder="Soil Type" />
+                      <input name="soil" onChange={(e) => setSoil(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Soil Type" />
                     </div>
                 </div>
                 <div className="plant-form-cont">
                     <div className="plant-form-label">
-                      <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
+                      <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                           Image*
                       </label>
                     </div>
                     <div className="plant-form-input">
-                      <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" placeholder="Image of plant" />
+                      <input name="image" onChange={(e) => setImage(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Image of plant" />
                     </div>
                 </div>
                 <div className="plant-form-cont">
                     <div className="plant-form-label">
-                      <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
+                      <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                           Light*
                       </label>
                     </div>
                     <div className="plant-form-input">
-                      <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" placeholder="Sunlight requirement" />
+                      <input name="light" onChange={(e) => setLight(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Sunlight requirement" />
                     </div>
                 </div>
                 <div className="plant-form-cont">
                     <div className="plant-form-label">
-                      <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
+                      <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                           Water*
                       </label>
                     </div>
                     <div className="plant-form-input">
-                      <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" placeholder="Water requirement" />
+                      <input name="water" onChange={(e) => setWater(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Water requirement" />
                     </div>
                 </div>
                 <div className="plant-form-cont">
-                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                         Climate
                     </label>
                     <br></br>
-                    <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <select name="climate" onChange={(e) => setClimate(e.target.value)} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                         <option>New Mexico</option>
                         <option>Missouri</option>
                         <option>Texas</option>
@@ -103,12 +103,12 @@ function CreatePlant() {
                 </div>
                 <div className="plant-form-cont">
                     <div className="plant-form-label">
-                      <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-password">
+                      <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
                           Summary*
                       </label>
                     </div>
                     <div className="plant-form-input">
-                      <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" placeholder="A brief description" />
+                      <input name="summary" onChange={(e) => setSummary(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="A brief description" />
                     </div>
                 </div>
             </form>
