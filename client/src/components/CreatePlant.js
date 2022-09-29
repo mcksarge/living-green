@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function CreatePlant({climates}) {
+function CreatePlant({climates, addPlant}) {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("")
   const [soil, setSoil] = useState("")
@@ -18,8 +18,18 @@ function CreatePlant({climates}) {
 
   // Add Plant to catalog
   function handleAddPlant(e) {
-    const plant = {"name": name, "soil": soil, "image": image, "light": light, "water": water, "climate": climate, "summary": summary}
-    console.log(plant)
+    const plant = {"name": name, "soil": soil, "image": image, "light": light, "water": water, "climate_id": climate, "summary": summary}
+    
+    fetch('http://localhost:3000/plants', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(plant)
+    })
+    .then((res) => res.json())
+    .then((newPlant) => addPlant(newPlant))
+    handleClose()
   }
 
 
@@ -92,10 +102,11 @@ function CreatePlant({climates}) {
                 </div>
                 <div className="plant-form-cont">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        Climate
+                        Climate*
                     </label>
                     <br></br>
                     <select name="climate" onChange={(e) => setClimate(e.target.value)} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                      <option></option>
                       {climates.map((climate, i) => <option key={i} value={climate.id}>{climate.name}</option>)}
                     </select>
                 </div>

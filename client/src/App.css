@@ -69,8 +69,11 @@
 
 .plant-card {
   border: 2px solid black;
-  width: 10em;
+  width: 12em;
+  height: 12em;
   padding: 5px;
+  margin: 10px;
+  overflow: hidden;
 }
 
 .plant-card:hover {
@@ -83,7 +86,8 @@
 }
 
 .plant-card-img {
-  width: 75%;
+  width: 70%;
+  height: 75%;
 }
 
 #plant-cont-buttons {
