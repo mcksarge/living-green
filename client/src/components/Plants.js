@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import PlantCard from './PlantCard';
 import CreatePlant from './CreatePlant';
+import ViewPlant from './ViewPlant';
 
 function Plants () {
     const [plants, setPlants] = useState([])

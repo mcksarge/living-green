@@ -73,7 +73,7 @@ function CreatePlant({climates, addPlant}) {
                 <div className="plant-form-cont">
                     <div className="plant-form-label">
                       <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                          Image*
+                          Image URL*
                       </label>
                     </div>
                     <div className="plant-form-input">

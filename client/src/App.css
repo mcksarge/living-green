@@ -61,6 +61,7 @@
   border-left-color: #5D3614;
   border-right-color: #5D3614;
   border-bottom-color: #945620;
+  display: flex;
   width: 75%;
   height: 50em;
   margin: auto;
