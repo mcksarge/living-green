@@ -105,3 +105,16 @@
 }
 
 /*************/
+
+/*Plant Info*/
+
+.plant-info-cont {
+  margin-left: 10%;
+}
+
+.plant-info-img {
+  max-width: 75%;
+  margin: auto;
+}
+
+/*************/
