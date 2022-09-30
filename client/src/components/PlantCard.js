@@ -30,48 +30,50 @@ function PlantCard({plant}) {
             <Modal.Body>
                 <div className="plant-info-cont">
                     <div className="plant-info">
-                        <div className="plant-info-name">
-                            <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                                {plant.name}
-                            </label>
-                        </div>
-                    </div>
-                    <div className="plant-info">
-                        <div className="plant-info-soil">
-                            <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" >
-                                {plant.soil}
-                            </label>
-                        </div>
-                    </div>
-                    <div className="plant-info">
                         <div className="plant-info-img-cont">
                             <img src={plant.image} className="plant-info-img"></img>
                         </div>
                     </div>
+                    <br></br>
+                    <div className="plant-info-summary">
+                        <p className="plant-summary" >
+                            {plant.summary}
+                        </p>
+                    </div>
+                    <br></br>
                     <div className="plant-info">
+                        <h4>Light requirements:</h4>
                         <div className="plant-info-light">
-                            <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                            <p className="plant-light">
                                 {plant.light}
-                            </label>
+                            </p>
                         </div>
                     </div>
+                    <br></br>
                     <div className="plant-info">
+                        <h4>Watering recommendations:</h4>
                         <div className="plant-info-water">
-                            <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                            <p className="plant-water">
                                 {plant.water}
-                            </label>
+                            </p>
                         </div>
                     </div>
+                    <br></br>
                     <div className="plant-info">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                            {plant.climate}
-                        </label>
+                        <h4>Soil recommendations:</h4>
+                        <div className="plant-info-soil">
+                            <p className="plant-soil">
+                                {plant.soil}
+                            </p>
+                        </div>
                     </div>
+                    <br></br>
                     <div className="plant-info">
-                        <div className="plant-info-summary">
-                            <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                                {plant.summary}
-                            </label>
+                        <h4>Native Climate:</h4>
+                        <div className="plant-info-climate">
+                            <p className="plant-climate">
+                                {plant.climate}
+                            </p>
                         </div>
                     </div>
                 </div>

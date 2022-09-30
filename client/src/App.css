@@ -78,12 +78,12 @@
 }
 
 .plant-card:hover {
-  background-color: green;
+  background-color: teal;
   cursor: pointer;
 }
 
 .plant-card:active {
-  background-color: greenyellow;
+  background-color: rgb(0, 71, 71);
 }
 
 .plant-card-img {
