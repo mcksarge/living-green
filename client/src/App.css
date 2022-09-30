@@ -38,8 +38,8 @@
 }
 
 .navlink:hover {
-  background-color: #945620;
-  color: white;
+  background-color: #edf4f2;
+  color: black;
 }
 
 /* *********** */
@@ -68,6 +68,11 @@
   height: 50em;
   margin: auto;
   padding: 10px;
+  flex-direction: row;
+  max-height: 1000px;
+  align-content: flex-start;
+  flex-flow: row wrap;
+  overflow: scroll;
 }
 
 .plant-card {
@@ -80,7 +85,8 @@
 }
 
 .plant-card:hover {
-  background-color: teal;
+  background-color: #31473a;
+  color: white;
   cursor: pointer;
 }
 
