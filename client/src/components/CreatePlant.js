@@ -35,7 +35,7 @@ function CreatePlant({climates, addPlant}) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button id="add-plant-button" className="plant-button" onClick={handleShow}>
         Add a Plant
       </Button>
 

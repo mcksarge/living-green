@@ -11,13 +11,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: seagreen;
+  background-color: #31473a;
   font-size: 20px;
   margin-bottom: 30px;
 }
 
 #navbar-title {
-  color: burlywood;
+  color: #edf4f2;
   margin: 1em;
   font-size: 40px;
   font-weight: 1000;
@@ -30,10 +30,11 @@
 .navlink {
   padding: .50em;
   margin-right: 5px;
-  background-color: rgb(99, 53, 25);
+  background-color: #7c8363;
   color: white;
   font-size: larger;
   text-decoration: none;
+  border-radius: 5px;
 }
 
 .navlink:hover {
@@ -57,10 +58,11 @@
 
 #plant-card-cont {
   border: 10px solid;
-  border-top-color: #945620;
-  border-left-color: #5D3614;
-  border-right-color: #5D3614;
-  border-bottom-color: #945620;
+  border-top-color: #7c8363;
+  border-left-color: #31473a;
+  border-right-color: #31473a;
+  border-bottom-color: #7c8363;
+  background-color: #edf4f2;
   display: flex;
   width: 75%;
   height: 50em;
@@ -102,6 +104,15 @@
 .plant-button {
   padding: 10px 50px;
   font-size: large;
+  border-radius: 5px;
+  background-color: #31473a;
+  color: white;
+  border-color: #31473a;
+  border-style: none;
+}
+
+#add-plant-button:hover {
+  background-color: #7c8363;
 }
 
 /*************/
