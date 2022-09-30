@@ -2,8 +2,13 @@ class PlantsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def index
-        plants = Plant.all
+        plants = Plant.order(name: :asc)
         render json: plants
+    end
+
+    def show
+        plant = Plant.find_by(id: params[:id])
+        render json: plant
     end
 
     def create

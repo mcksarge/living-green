@@ -5,4 +5,9 @@ class ClimatesController < ApplicationController
         render json: climates
     end
 
+    def show
+        climate = Climate.find_by(id: params[:id])
+        render json: climate
+    end
+
 end
