@@ -3,12 +3,23 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 
-function PlantCard({plant}) {
+function PlantCard({plant, onDeletePlant}) {
     const [show, setShow] = useState(false);
 
     // Shows or hides the popup window
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    // Deletes plant
+    function handleDelete() {
+        fetch(`http://localhost:3000/plants/${plant.id}`, {
+            method: "DELETE"
+        })
+        .then((res) => res.json())
+        .then((deletedPlant) => {
+            onDeletePlant(deletedPlant)
+        })
+    }
 
 
     return (
@@ -72,13 +83,16 @@ function PlantCard({plant}) {
                         <h4>Native Climate:</h4>
                         <div className="plant-info-climate">
                             <p className="plant-climate">
-                                {plant.climate}
+                                {plant.climate.name}
                             </p>
                         </div>
                     </div>
                 </div>
             </Modal.Body>
             <Modal.Footer>
+                <Button className="plant-info-delete-btn" onClick={handleDelete}>
+                Delete
+                </Button>
                 <Button variant="secondary" onClick={handleClose}>
                 Close
                 </Button>

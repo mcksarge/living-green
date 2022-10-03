@@ -3,17 +3,23 @@ class PlantsController < ApplicationController
 
     def index
         plants = Plant.order(name: :asc)
-        render json: plants
+        render json: plants, include: :climate
     end
 
     def show
         plant = Plant.find_by(id: params[:id])
-        render json: plant
+        render json: plant, include: :climate
     end
 
     def create
         plant = Plant.create(plant_params)
         render json: plant, status: :created
+    end
+
+    def destroy
+        plant = Plant.find_by(id: params[:id])
+        plant.destroy
+        render json: plant
     end
 
     private

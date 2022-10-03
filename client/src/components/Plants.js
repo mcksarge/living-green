@@ -13,7 +13,8 @@ function Plants () {
         fetch("http://localhost:3000/plants")
         .then((res) => res.json())
         .then((data) => setPlants(data))
-
+        console.log(plants)
+        setRefreshPlants(false)
     }, [refreshPlants])
 
     // Fetches climates for dropdown selection
@@ -22,9 +23,14 @@ function Plants () {
         .then((res) => res.json())
         .then((data) => {
             setClimates(data)
-            setRefreshPlants(false)
+            
         })
     }, [])
+
+    // Handles delete plant
+    function handleDeletePlant(deletedPlant) {
+        setRefreshPlants(false)
+    }
 
     //Refreshes new plants
     function addPlant() {
@@ -48,7 +54,7 @@ function Plants () {
             <h2>Plant-O-Pedia</h2>
             <div id="plant-cont-buttons">
                 <button className="plant-button">Filter</button>
-                <CreatePlant climates={climates} addPlant={addPlant} />
+                <CreatePlant climates={climates} addPlant={addPlant} onDeletePlant={handleDeletePlant} />
                 <button className="plant-button">Search</button>
             </div>
             <div id="plant-card-cont">

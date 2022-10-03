@@ -134,4 +134,9 @@
   margin: auto;
 }
 
+.plant-info-delete-btn {
+  background-color: red;
+  border-color: red;
+}
+
 /*************/
