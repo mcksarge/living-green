@@ -101,8 +101,6 @@
 
 #plant-cont-buttons {
   padding: 30px;
-  display: flex;
-  justify-content: space-between;
   width: 75%;
   margin: auto;
 }
@@ -127,6 +125,7 @@
 
 #plant-search {
   width: 30%;
+  margin-right: 10px;
 }
 
 /*************/

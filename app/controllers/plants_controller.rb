@@ -2,7 +2,7 @@ class PlantsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def index
-        plants = Plant.order(name: :asc)
+        plants = Plant.all
         render json: plants, include: :climate
     end
 
