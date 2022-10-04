@@ -81,7 +81,7 @@ function Plants () {
             </div>
             <div id="plant-search-cont">
                 <input id="plant-search" placeholder='Search' onChange={event => setQuery(event.target.value)}></input>
-                <label>Sort by:</label>
+                <label id="plant-sort">Sort by:</label>
                 <select onChange={handleSort}>
                     <option>A-Z</option>
                     <option>Z-A</option>
