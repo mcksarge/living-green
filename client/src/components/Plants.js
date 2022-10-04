@@ -7,13 +7,13 @@ function Plants () {
     const [plants, setPlants] = useState([])
     const [climates, setClimates] = useState([])
     const [refreshPlants, setRefreshPlants] = useState(true)
+    const [query, setQuery] = useState("")
 
     //Fetches Plants
     useEffect(() => {
         fetch("http://localhost:3000/plants")
         .then((res) => res.json())
         .then((data) => setPlants(data))
-        console.log(plants)
         setRefreshPlants(false)
     }, [refreshPlants])
 
@@ -23,13 +23,13 @@ function Plants () {
         .then((res) => res.json())
         .then((data) => {
             setClimates(data)
-            
         })
     }, [])
 
     // Handles delete plant
     function handleDeletePlant(deletedPlant) {
-        setRefreshPlants(false)
+        const updatedPlants = plants.filter((plant) => plant.id !== deletedPlant)
+        setPlants(updatedPlants)
     }
 
     //Refreshes new plants
@@ -38,24 +38,37 @@ function Plants () {
     }
 
     //Maps plants to PlantCard
-    const allPlants = plants.map((plant, i) => {
+    const allPlants = plants.filter((plant) => {
+        if (query == ""){
+            return plant
+        } else if (plant.name.toLowerCase().includes(query.toLowerCase())){
+            return plant
+        }
+    }).map((plant, i) => {
         return (
             <>
                 <PlantCard 
                 key={i}
                 plant={plant}
+                onDeletePlant={handleDeletePlant}
                 />
             </>
         )
     })
 
+
+
     return (
         <>
             <h2>Plant-O-Pedia</h2>
             <div id="plant-cont-buttons">
-                <button className="plant-button">Filter</button>
-                <CreatePlant climates={climates} addPlant={addPlant} onDeletePlant={handleDeletePlant} />
-                <button className="plant-button">Search</button>
+                <select>
+                    <option>Howdy</option>
+                </select>
+                <CreatePlant climates={climates} addPlant={addPlant} />
+            </div>
+            <div id="plant-search-cont">
+                <input id="plant-search" placeholder='Search' onChange={event => setQuery(event.target.value)}></input>
             </div>
             <div id="plant-card-cont">
                 {allPlants}

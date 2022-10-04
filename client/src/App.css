@@ -121,6 +121,14 @@
   background-color: #7c8363;
 }
 
+#plant-search-cont {
+  margin-bottom: 20px;
+}
+
+#plant-search {
+  width: 30%;
+}
+
 /*************/
 
 /*Plant Info*/

@@ -15,17 +15,20 @@ function PlantCard({plant, onDeletePlant}) {
         fetch(`http://localhost:3000/plants/${plant.id}`, {
             method: "DELETE"
         })
-        .then((res) => res.json())
-        .then((deletedPlant) => {
-            onDeletePlant(deletedPlant)
+        .then((res) => {
+            if(res.ok){
+                onDeletePlant(plant.id)
+                handleClose()
+            }
         })
+
     }
 
 
     return (
         <>
             <div className="plant-card" onClick={handleShow}>
-                <img className="plant-card-img" src={plant.image}></img>
+                <img className="plant-card-img" alt={plant.name} src={plant.image}></img>
                 <h4>{plant.name}</h4>
             </div>
     
@@ -42,7 +45,7 @@ function PlantCard({plant, onDeletePlant}) {
                 <div className="plant-info-cont">
                     <div className="plant-info">
                         <div className="plant-info-img-cont">
-                            <img src={plant.image} className="plant-info-img"></img>
+                            <img src={plant.image} alt={plant.name} className="plant-info-img"></img>
                         </div>
                     </div>
                     <br></br>
