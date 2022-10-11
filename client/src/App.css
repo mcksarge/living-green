@@ -151,3 +151,27 @@
 }
 
 /*************/
+
+/* New Account */
+
+#new-account-cont {
+  margin: auto;
+  position: relative;
+}
+
+#new-account-input-cont {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.new-account-input {
+  width: 25%;
+  margin: 5px auto;
+}
+
+#create-account-btn {
+  margin-top: 10px;
+}
+
+/*******************/

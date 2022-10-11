@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     include ActionController::Cookies
-    before_action :authorized
+    # before_action :authorized
 
     def authorized
         @user = User.find_by(id: session[:user_id])
