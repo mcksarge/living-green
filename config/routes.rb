@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :climates, only: [:show, :index]
 
-
+  #Session
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
 
 end
