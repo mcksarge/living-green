@@ -1,20 +1,24 @@
 import React, {useState} from 'react';
-import {NavLink} from 'react-router-dom'
+import {NavLink} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 
 
 function LoginPage() {
     const [username, setUsername] = useState("")
-    const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [errors, setErrors] = useState([])
+    const dispatch = useDispatch();
+    
+    
+
 
     // Handles Login
     function onLogin(e) {
         e.preventDefault()
 
-        const user={username, name, password}
+        const user={username, password}
 
-        fetch('/login', {
+        fetch('http://localhost:3000/login', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -55,12 +59,11 @@ function LoginPage() {
                 </ul>
             )}
             <h1>Login</h1>
-            <form id="new-account-input-cont">
+            <form id="new-account-input-cont" onSubmit={onLogin}>
                 <input onChange={(e) => setUsername(e.target.value)} className="new-account-input" placeholder="Username"></input>
-                <input onChange={(e) => setName(e.target.value)} className="new-account-input" placeholder="Full Name"></input>
                 <input onChange={(e) => setPassword(e.target.value)} className="new-account-input" placeholder="Password" type="password"></input>
+                <input type="submit" id="login-submit-btn" />
             </form>
-            <button>Login</button>
             <br></br>
             <br></br>
             <label><strong>Don't have an account?</strong></label>

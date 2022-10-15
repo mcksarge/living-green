@@ -1,9 +1,8 @@
-const initialState = {
-    posts: []
-}
+import { combineReducers } from "redux";
+import { userReducer } from "react";
 
-const rootReducer = (state = initialState, action) => {
-    return state;
-}
+const rootReducer = combineReducers({
+    user: userReducer
+})
 
 export default rootReducer;
