@@ -19,7 +19,7 @@ function LoginPage({onLogin}) {
 
         if(!createAccount) {
             const user={username, password}
-            fetch('http://localhost:3000/login', {
+            fetch('/login', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -66,20 +66,20 @@ function LoginPage({onLogin}) {
         }
     }
 
-    const errorMessage = errors.map((error) => {
-        <p key={error.login}>{error.login}</p>
-    })
+    // const errorMessage = errors.map((error) => {
+    //     <p key={error.login}>{error.login}</p>
+    // })
     
     if(!createAccount){
         return (
             <div id="new-account-cont">
-                {errors.length > 0 && (
+                {/* {errors.length > 0 && (
                     <ul style={{ color: "red" }}>
                     {errors.map((error) => (
                         <li key={error}>{error.login}</li>
                     ))}
                     </ul>
-                )}
+                )} */}
                 <h1>Login</h1>
                 <form id="new-account-input-cont" onSubmit={onSubmit}>
                     <input onChange={(e) => setUsername(e.target.value)} className="new-account-input" placeholder="Username"></input>

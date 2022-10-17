@@ -1,6 +1,14 @@
 import {NavLink} from 'react-router-dom';
 
-function NavBar() {
+function NavBar({onLogout}) {
+
+    function handleLogout() {
+        fetch("/logout", {
+            method: "DELETE"
+        })
+        .then(() => onLogout())
+    }
+
     return (
         <>
             <div id="navbar-container">
@@ -9,7 +17,7 @@ function NavBar() {
                     <NavLink to="/home" exact className="navlink">Home</NavLink>
                     <NavLink to="/plants" className="navlink">Plants</NavLink>
                     <NavLink to="/articles" className="navlink">Articles</NavLink>
-                    <NavLink to="/logout" className="navlink">Logout</NavLink>
+                    <button className="navlink" onClick={handleLogout}>Logout</button>
                 </div>
             </div>
         </>

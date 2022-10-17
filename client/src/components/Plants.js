@@ -11,7 +11,7 @@ function Plants () {
 
     //Fetches Plants
     useEffect(() => {
-        fetch("http://localhost:3000/plants")
+        fetch("/plants")
         .then((res) => res.json())
         .then((data) => setPlants(data))
         setRefreshPlants(false)
@@ -19,7 +19,7 @@ function Plants () {
 
     // Fetches climates for dropdown selection
     useEffect(() => {
-        fetch("http://localhost:3000/climates")
+        fetch("/climates")
         .then((res) => res.json())
         .then((data) => {
             setClimates(data)

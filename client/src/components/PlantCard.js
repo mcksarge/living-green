@@ -12,7 +12,7 @@ function PlantCard({plant, onDeletePlant}) {
 
     // Deletes plant
     function handleDelete() {
-        fetch(`http://localhost:3000/plants/${plant.id}`, {
+        fetch(`/plants/${plant.id}`, {
             method: "DELETE"
         })
         .then((res) => {

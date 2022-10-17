@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+    skip_before_action :verify_authenticity_token
+    skip_before_action :authorize
 
     # Assign user to current session / Login User
     def create
@@ -10,6 +12,7 @@ class SessionsController < ApplicationController
             render json: {errors: [login: "Invalid username or password"]}, status: :unauthorized
         end
     end
+
 
     # Logout User
     def destroy

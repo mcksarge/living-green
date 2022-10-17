@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
     include ActionController::Cookies
-    before_action :authorized
+    before_action :authorize
 
-    def authorized
+    def authorize
         @user = User.find_by(id: session[:user_id])
         render json: {error: "Not Authorized"}, status: :unauthorized unless @user
     end

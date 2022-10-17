@@ -1,4 +1,5 @@
 class ClimatesController < ApplicationController
+    skip_before_action :authorize
 
     def index #List all climates
         climates = Climate.all

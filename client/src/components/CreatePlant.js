@@ -20,7 +20,7 @@ function CreatePlant({climates, addPlant}) {
   function handleAddPlant(e) {
     const plant = {"name": name, "soil": soil, "image": image, "light": light, "water": water, "climate_id": climate, "summary": summary}
     
-    fetch('http://localhost:3000/plants', {
+    fetch('/plants', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
