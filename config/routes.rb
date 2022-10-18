@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :climates, only: [:show]
   end
   resources :users
+  resources :user_plants
 
 
   resources :climates, only: [:show, :index]
