@@ -17,7 +17,7 @@ function NavBar({onLogout}) {
                     <NavLink to="/home" exact className="navlink">Home</NavLink>
                     <NavLink to="/plants" className="navlink">Plants</NavLink>
                     <NavLink to="/articles" className="navlink">Articles</NavLink>
-                    <button className="navlink" onClick={handleLogout}>Logout</button>
+                    <NavLink to ="/" className="navlink" onClick={handleLogout}>Logout</NavLink>
                 </div>
             </div>
         </>

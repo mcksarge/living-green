@@ -72,7 +72,7 @@ function LoginPage({onLogin}) {
     
     if(!createAccount){
         return (
-            <div id="new-account-cont">
+            <div className="new-account-cont">
                 {/* {errors.length > 0 && (
                     <ul style={{ color: "red" }}>
                     {errors.map((error) => (
@@ -80,7 +80,7 @@ function LoginPage({onLogin}) {
                     ))}
                     </ul>
                 )} */}
-                <h1>Login</h1>
+                <h2>Login</h2>
                 <form id="new-account-input-cont" onSubmit={onSubmit}>
                     <input onChange={(e) => setUsername(e.target.value)} className="new-account-input" placeholder="Username"></input>
                     <input onChange={(e) => setPassword(e.target.value)} className="new-account-input" placeholder="Password" type="password"></input>
@@ -88,7 +88,7 @@ function LoginPage({onLogin}) {
                 </form>
                 <br></br>
                 <br></br>
-                <label><strong>Don't have an account?</strong></label>
+                <label><strong>Don't have an account?  Join the club!</strong></label>
                 <br></br>
                 <br></br>
                 <button onClick={handleShowLogin}>Create Account</button>
@@ -96,7 +96,7 @@ function LoginPage({onLogin}) {
         )
     } else {
             return (
-                <div id="new-account-cont">
+                <div className="new-account-cont">
                     {errors.length > 0 && (
                         <ul style={{ color: "red" }}>
                         {errors.map((error) => (
@@ -104,7 +104,7 @@ function LoginPage({onLogin}) {
                         ))}
                         </ul>
                     )}
-                    <h1>New Account</h1>
+                    <h2>New Account</h2>
                     <form id="new-account-input-cont" onSubmit={onSubmit}>
                         <input onChange={(e) => setUsername(e.target.value)} className="new-account-input" placeholder="Username"></input>
                         <input onChange={(e) => setName(e.target.value)} className="new-account-input" placeholder="Your Name"></input>
@@ -113,7 +113,7 @@ function LoginPage({onLogin}) {
                     </form>
                     <br></br>
                     <br></br>
-                    <label><strong>Already have an account?</strong></label>
+                    <label><strong>Already have an account? Login here!</strong></label>
                     <br></br>
                     <br></br>
                     <button onClick={handleShowLogin}>Login</button>

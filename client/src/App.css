@@ -154,9 +154,12 @@
 
 /* New Account */
 
-#new-account-cont {
+.new-account-cont {
   margin: auto;
   position: relative;
+  border: 1px solid;
+  width: 50%;
+  padding-bottom: 10px;
 }
 
 #new-account-input-cont {
