@@ -2,7 +2,7 @@ class UserPlantController < ApplicationController
 
     def index
         userPlants = UserPlant.all
-        render json: userPlants
+        render json: userPlants, include: [:plant]
     end
 
     def show

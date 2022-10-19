@@ -1,7 +1,26 @@
-
+import {useEffect, useState} from 'react';
+import UserPlantCard from './UserPlantCard';
 
 function Home({user}) {
+    const [plants, setPlants] = useState([])
+    
+    useEffect(() => {
+        fetch('/myplants')
+        .then(res => res.json())
+        .then(data => setPlants(data))
+    }, [])
 
+    const listPlants = plants.map((userPlant, i) => {
+        console.log(userPlant.plant)
+        return (
+            <>
+                <UserPlantCard 
+                key={i}
+                plant={userPlant.plant}
+                />
+            </>
+            )
+    })
 
     return (
         <>
@@ -20,6 +39,9 @@ function Home({user}) {
             </div>
             <hr></hr>
             <h2>Your Plants</h2>
+            <div id="plant-card-cont">
+                {listPlants}
+            </div>
 
         </>
     )
