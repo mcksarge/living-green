@@ -14,9 +14,11 @@ Rails.application.routes.draw do
   #User
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
+ 
 
   #UserPlants
   get "/myplants", to: "user_plant#index"
+  get "/myplants/:id", to: "user_plant#myplants"
   post "/myplants/add", to: "user_plant#create"
   delete "/myplants/remove/:id", to: "user_plant#destroy"
 

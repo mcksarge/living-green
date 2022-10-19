@@ -3,10 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 
-function UserPlantCard({userPlant}) {
+function UserPlantCard({onDelete, userPlant}) {
     const [show, setShow] = useState(false);
     const plant = userPlant.plant
-    const user = userPlant.user
+    // console.log(userPlant)
 
     // Shows or hides the popup window
     const handleClose = () => setShow(false);
@@ -20,7 +20,7 @@ function UserPlantCard({userPlant}) {
         })
         .then((res) => {
             if(res.ok){
-                // onDeletePlant(plant.id)
+                onDelete(userPlant.id)
                 handleClose()
             }
         })

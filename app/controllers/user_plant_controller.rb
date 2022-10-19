@@ -12,6 +12,12 @@ class UserPlantController < ApplicationController
         render json: userPlant
     end
 
+    def myplants
+        user = User.find_by(id: params[:id])
+        userPlants = user.user_plants
+        render json: userPlants, include: :plant
+    end
+
     def create
         userPlant = UserPlant.create(userPlant_params)
         render json: userPlant

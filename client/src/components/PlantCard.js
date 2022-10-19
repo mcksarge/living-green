@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 
 function PlantCard({user, plant, onDeletePlant}) {
     const [show, setShow] = useState(false);
-    console.log(plant)
+
 
     // Shows or hides the popup window
     const handleClose = () => setShow(false);
@@ -18,7 +18,7 @@ function PlantCard({user, plant, onDeletePlant}) {
         })
         .then((res) => {
             if(res.ok){
-                // onDeletePlant(plant.id)
+                onDeletePlant(plant.id)
                 handleClose()
             }
         })
@@ -29,7 +29,6 @@ function PlantCard({user, plant, onDeletePlant}) {
     function handleAdd() {
 
         const userPlant = {"user_id": user.id,"plant_id": plant.id}
-        console.log(userPlant)
 
         fetch('/myplants/add', {
             method: "POST",
@@ -38,6 +37,7 @@ function PlantCard({user, plant, onDeletePlant}) {
             },
             body: JSON.stringify(userPlant)
         })
+        handleClose()
     }
 
 

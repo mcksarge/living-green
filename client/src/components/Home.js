@@ -3,23 +3,41 @@ import UserPlantCard from './UserPlantCard';
 
 function Home({user}) {
     const [plants, setPlants] = useState([])
+    const [refreshPlants, setRefreshPlants] = useState(true)
+
     
     useEffect(() => {
-        fetch('/myplants')
+        fetch(`/myplants/${user.id}`)
         .then(res => res.json())
-        .then(data => setPlants(data))
+        .then(data => {
+            setPlants(data)
+            setRefreshPlants(false)
+        })
     }, [])
 
+    function handleDeletePlant(deletedPlant) {
+        const updatedPlants = plants.filter((plant) => plant.id !== deletedPlant)
+        setPlants(updatedPlants)
+    }
+
     const listPlants = plants.map((userPlant, i) => {
-        console.log(userPlant.plant)
-        return (
-            <>
-                <UserPlantCard 
-                key={i}
-                userPlant={userPlant}
-                />
-            </>
+        console.log(userPlant)
+        if(plants.length > 0){
+            return (
+                <>
+                    <UserPlantCard 
+                    key={i}
+                    userPlant={userPlant}
+                    onDelete={handleDeletePlant}
+                    />
+                </>
+                )
+        } else {
+            return (
+                <h3>No Plants</h3>
             )
+        }
+
     })
 
     return (
