@@ -3,7 +3,7 @@ import PlantCard from './PlantCard';
 import CreatePlant from './CreatePlant';
 
 
-function Plants () {
+function Plants ({user}) {
     const [plants, setPlants] = useState([])
     const [climates, setClimates] = useState([])
     const [refreshPlants, setRefreshPlants] = useState(true)
@@ -66,6 +66,7 @@ function Plants () {
                 key={i}
                 plant={plant}
                 onDeletePlant={handleDeletePlant}
+                user={user}
                 />
             </>
         )

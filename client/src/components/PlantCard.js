@@ -3,8 +3,9 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 
-function PlantCard({plant, onDeletePlant}) {
+function PlantCard({user, plant, onDeletePlant}) {
     const [show, setShow] = useState(false);
+    console.log(plant)
 
     // Shows or hides the popup window
     const handleClose = () => setShow(false);
@@ -17,11 +18,26 @@ function PlantCard({plant, onDeletePlant}) {
         })
         .then((res) => {
             if(res.ok){
-                onDeletePlant(plant.id)
+                // onDeletePlant(plant.id)
                 handleClose()
             }
         })
 
+    }
+
+    //Adds plant to users plant list
+    function handleAdd() {
+
+        const userPlant = {"user_id": user.id,"plant_id": plant.id}
+        console.log(userPlant)
+
+        fetch('/myplants/add', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userPlant)
+        })
     }
 
 
@@ -93,11 +109,14 @@ function PlantCard({plant, onDeletePlant}) {
                 </div>
             </Modal.Body>
             <Modal.Footer>
+                <Button onClick={handleAdd}>
+                    Add to your list
+                </Button>
                 <Button className="plant-info-delete-btn" onClick={handleDelete}>
-                Delete
+                    Delete
                 </Button>
                 <Button variant="secondary" onClick={handleClose}>
-                Close
+                    Close
                 </Button>
             </Modal.Footer>
             </Modal>

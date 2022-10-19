@@ -16,7 +16,7 @@ function Home({user}) {
             <>
                 <UserPlantCard 
                 key={i}
-                plant={userPlant.plant}
+                userPlant={userPlant}
                 />
             </>
             )
@@ -39,7 +39,7 @@ function Home({user}) {
             </div>
             <hr></hr>
             <h2>Your Plants</h2>
-            <div id="plant-card-cont">
+            <div id="my-plant-card-cont">
                 {listPlants}
             </div>
 

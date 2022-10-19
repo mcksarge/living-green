@@ -3,14 +3,29 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 
-function UserPlantCard({plant}) {
+function UserPlantCard({userPlant}) {
     const [show, setShow] = useState(false);
+    const plant = userPlant.plant
+    const user = userPlant.user
 
     // Shows or hides the popup window
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    console.log(plant.climate)
+    //Removes plant from user list
+    function handleRemove() {
+        console.log(userPlant.id)
+        fetch(`/myplants/remove/${userPlant.id}`, {
+            method: "DELETE"
+        })
+        .then((res) => {
+            if(res.ok){
+                // onDeletePlant(plant.id)
+                handleClose()
+            }
+        })
+    }
+
 
 
     return (
@@ -81,8 +96,11 @@ function UserPlantCard({plant}) {
                 </div>
             </Modal.Body>
             <Modal.Footer>
+                <Button onClick={handleRemove}>
+                    Remove from my list
+                </Button>
                 <Button variant="secondary" onClick={handleClose}>
-                Close
+                    Close
                 </Button>
             </Modal.Footer>
             </Modal>

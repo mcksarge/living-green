@@ -1,8 +1,10 @@
 class UserPlantController < ApplicationController
+    skip_before_action :verify_authenticity_token
+    skip_before_action :authorize
 
     def index
         userPlants = UserPlant.all
-        render json: userPlants, include: [:plant]
+        render json: userPlants, include: [:plant, :user]
     end
 
     def show
