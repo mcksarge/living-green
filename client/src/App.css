@@ -16,6 +16,10 @@
   margin-bottom: 30px;
 }
 
+#logged-in-user {
+  color: white
+}
+
 #navbar-title {
   color: #edf4f2;
   margin: 1em;

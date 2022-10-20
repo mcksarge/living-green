@@ -1,6 +1,7 @@
 import {NavLink} from 'react-router-dom';
+import UserPlantCard from './UserPlantCard';
 
-function NavBar({onLogout}) {
+function NavBar({user, onLogout}) {
 
     function handleLogout() {
         fetch("/logout", {
@@ -13,6 +14,7 @@ function NavBar({onLogout}) {
         <>
             <div id="navbar-container">
                 <h1 id="navbar-title">Living Greenery</h1>
+                <h4 id="logged-in-user">Logged in as: {user.name}</h4>
                 <div id="navbar-links">
                     <NavLink to="/home" exact className="navlink">Home</NavLink>
                     <NavLink to="/plants" className="navlink">Plants</NavLink>

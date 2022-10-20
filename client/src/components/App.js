@@ -59,7 +59,7 @@ function App() {
   } else {
 return (
     <div className="App">
-        <NavBar onLogout={handleLogout} />
+        <NavBar user={user} onLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Home user={user} />} />
           <Route path="/home" element={<Home user={user} />} />
