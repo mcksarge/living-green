@@ -13,7 +13,7 @@ function Articles ({user}) {
         setRefresh(false)
     }, [refresh])
 
-    function onAddArticle(){
+    function onArticleChange(){
         setRefresh(true)
       }
     
@@ -25,6 +25,8 @@ function Articles ({user}) {
                 <ArticleCard
                     key={i}
                     article={article}
+                    user={user}
+                    onDeleteArticle={onArticleChange}
                 />
             </>
         )
@@ -34,7 +36,7 @@ function Articles ({user}) {
         <>
             <h2>Seeds of Information</h2>
             <div id="create-article-btn-cont">
-                <CreateArticle user={user} addArticle={onAddArticle} />
+                <CreateArticle user={user} addArticle={onArticleChange} />
             </div>
             <br></br>
             <div id="articles-cont">
