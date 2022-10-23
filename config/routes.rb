@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :climates, only: [:show]
   end
   resources :users
-
+  resources :articles
 
   resources :climates, only: [:show, :index]
 
@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   get "/myplants/:id", to: "user_plant#myplants"
   post "/myplants/add", to: "user_plant#create"
   delete "/myplants/remove/:id", to: "user_plant#destroy"
+
 
 end

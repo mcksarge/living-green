@@ -21,7 +21,7 @@ function Home({user}) {
     }
 
     const listPlants = plants.map((userPlant, i) => {
-        console.log(userPlant)
+
         if(plants.length > 0){
             return (
                 <>
