@@ -8,7 +8,7 @@ import {Routes, Route} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 
 function App() {
-
+  const [articles, setArticles] = useState([])
   const [user, setUser] = useState(null)
 
   // Auto Login
@@ -64,7 +64,7 @@ return (
           <Route path="/" element={<Home user={user} />} />
           <Route path="/home" element={<Home user={user} />} />
           <Route path="/plants" element={<Plants user={user} />} />
-          <Route path="/articles" element={<Articles />} />
+          <Route path="/articles" element={<Articles articles={articles} user={user} />} />
         </Routes>
     </div>
   );

@@ -39,6 +39,7 @@
   font-size: larger;
   text-decoration: none;
   border-radius: 5px;
+  text-decoration: none;
 }
 
 .navlink:hover {
@@ -224,7 +225,7 @@
     border-bottom-color: #7c8363;
     background-color: #edf4f2;
     display: flex;
-    width: 75%;
+    max-width: 50%;
     height: 50em;
     margin: auto;
     padding: 10px;
@@ -236,8 +237,43 @@
     overflow: scroll;
   }
 
-  .article-card-title {
+  .article-card-link {
     margin-inline-end: auto;
+    padding: .50em;
+    margin-right: 5px;
+    background-color: #7c8363;
+    color: white;
+    font-size: larger;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+
+  .article-link {
+    margin-inline-end: auto;
+    margin-right: 5px;
+    color: white;
+    font-size: larger;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .article-card-link:hover {
+    background-color: #31473a;
+    cursor: pointer;
+  }
+
+  .article-link:hover {
+    color: white;
+  }
+
+  #add-article-button {
+    padding: .50em;
+    background-color: #31473a;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border-color: #31473a
   }
 
 /**************/

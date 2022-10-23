@@ -4,12 +4,12 @@ class ArticlesController < ApplicationController
 
     def index
         articles = Article.all
-        render json: articles
+        render json: articles, include: :user
     end
 
     def show
         article = Article.find_by(id: params[:id])
-        render json: article
+        render json: article, include: :user
     end
 
     def create
