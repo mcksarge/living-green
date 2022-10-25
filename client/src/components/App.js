@@ -4,12 +4,15 @@ import NavBar from './NavBar'
 import Plants from './Plants';
 import Articles from './Articles';
 import LoginPage from './LoginPage';
+import { UserContext } from './Contexts/UserContext';
+import { PlantContext } from './Contexts/PlantContext';
 import {Routes, Route} from 'react-router-dom';
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useContext} from 'react';
 
 function App() {
   const [articles, setArticles] = useState([])
   const [user, setUser] = useState(null)
+  const [plants, setPlants] = useState([])
 
   // Auto Login
   useEffect(() => {
@@ -18,6 +21,12 @@ function App() {
     .then(data => setUser(data))
   }, []);
   /************************* */  
+
+  useEffect(() => {
+    fetch("/plants")
+    .then((res) => res.json())
+    .then((data) => setPlants(data))
+    }, [])
 
   //Handles login of user
   function handleLogin(user) {
@@ -30,6 +39,7 @@ function App() {
     setUser(null)
   }
   /**************** */
+
 
   if(!user){
     return (
@@ -58,13 +68,17 @@ function App() {
   } else {
 return (
     <div className="App">
-        <NavBar user={user} onLogout={handleLogout} />
+      <UserContext.Provider value={{user, setUser}}>
+      <PlantContext.Provider value={{plants, setPlants}}>
+        <NavBar onLogout={handleLogout} />
         <Routes>
-          <Route path="/" element={<Home user={user} />} />
-          <Route path="/home" element={<Home user={user} />} />
-          <Route path="/plants" element={<Plants user={user} />} />
-          <Route path="/articles" element={<Articles articles={articles} user={user} />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/plants" element={<Plants />} />
+          <Route path="/articles" element={<Articles articles={articles} />} />
         </Routes>
+        </PlantContext.Provider>
+        </UserContext.Provider>
     </div>
   );
   }

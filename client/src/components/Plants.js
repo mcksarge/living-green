@@ -1,21 +1,24 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import PlantCard from './PlantCard';
 import CreatePlant from './CreatePlant';
+import { UserContext } from './Contexts/UserContext';
+import { PlantContext } from './Contexts/PlantContext';
 
 
-function Plants ({user}) {
-    const [plants, setPlants] = useState([])
+function Plants () {
     const [climates, setClimates] = useState([])
-    const [refreshPlants, setRefreshPlants] = useState(true)
     const [query, setQuery] = useState("")
 
-    //Fetches Plants
-    useEffect(() => {
-        fetch("/plants")
-        .then((res) => res.json())
-        .then((data) => setPlants(data))
-        setRefreshPlants(false)
-    }, [refreshPlants])
+    const {user, setUser} = useContext(UserContext)
+    const {plants, setPlants} = useContext(PlantContext)
+
+    // //Fetches Plants
+    // useEffect(() => {
+    //     fetch("/plants")
+    //     .then((res) => res.json())
+    //     .then((data) => setPlants(data))
+    //     setRefreshPlants(false)
+    // }, [refreshPlants])
 
     
 
@@ -35,13 +38,14 @@ function Plants ({user}) {
     }
 
     //Refreshes new plants
-    function addPlant() {
-        setRefreshPlants(true)
+    function addPlant(newPlant) {
+        setPlants([newPlant, ...plants])
     }
+
 
     //Sorts plants
     function handleSort(e) {
-        if (e.target.value == "A-Z") {
+        if (e.target.value === "A-Z") {
             const sortedPlants = [...plants].sort((a, b) => {
                 return a.name > b.name ? 1 : -1
             })
@@ -56,7 +60,7 @@ function Plants ({user}) {
 
     //Maps plants to PlantCard
     const allPlants = plants.filter((plant) => {
-        if (query == ""){
+        if (query === ""){
             return plant
         } else if (plant.name.toLowerCase().includes(query.toLowerCase())){
             return plant

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+import { UserContext } from './components/Contexts/UserContext';
 import rootReducer from './reducers/rootReducer';
 
 const store = createStore(rootReducer);

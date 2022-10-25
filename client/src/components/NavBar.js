@@ -1,7 +1,12 @@
+import { useContext } from 'react';
 import {NavLink} from 'react-router-dom';
-import UserPlantCard from './UserPlantCard';
+import { UserContext } from './Contexts/UserContext';
 
-function NavBar({user, onLogout}) {
+
+
+function NavBar({onLogout}) {
+
+    const {user, setUser} = useContext(UserContext)
 
     function handleLogout() {
         fetch("/logout", {

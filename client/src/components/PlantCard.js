@@ -40,17 +40,14 @@ function PlantCard({user, plant, onDeletePlant}) {
         })
         .then(res => res.json())
         .then(data => console.log(data))
-        handleClose()
         setOwned(true)
     }
 
      //Removes plant to users plant list
      function onRemoveUser() {
-        
         const userPlant = plant.user_plants.filter((user_plant) => user_plant.user_id == user.id && user_plant.plant_id == plant.id).map(filteredUserPlant => (
             filteredUserPlant.id
         ))
-
 
         fetch(`/myplants/remove/${userPlant}`, {
             method: "DELETE"
@@ -60,14 +57,15 @@ function PlantCard({user, plant, onDeletePlant}) {
                 onDeletePlant()
             }
         })
-        handleClose()
         setOwned(false)
     }
+    /********* *********/
 
     //Determines if user owns plant
-    const owner = plant.users.filter((owner) => owner.id == user.id)
+    // const owner = plant.users.filter((owner) => owner.id == user.id)
+    // console.log(plant.name, owner)
   
-    if(owner == "" & !owned){
+    if(!owned){
         return (
             <>
                 <div className="plant-card" onClick={handleShow}>
@@ -126,12 +124,12 @@ function PlantCard({user, plant, onDeletePlant}) {
                         </div>
                         <br></br>
                         <div className="plant-info">
-                            <h4>Native Climate:</h4>
+                            {/* <h4>Native Climate:</h4>
                             <div className="plant-info-climate">
                                 <p className="plant-climate">
                                     {plant.climate.name}
                                 </p>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </Modal.Body>
@@ -208,12 +206,12 @@ function PlantCard({user, plant, onDeletePlant}) {
                         </div>
                         <br></br>
                         <div className="plant-info">
-                            <h4>Native Climate:</h4>
+                            {/* <h4>Native Climate:</h4>
                             <div className="plant-info-climate">
                                 <p className="plant-climate">
                                     {plant.climate.name}
                                 </p>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </Modal.Body>

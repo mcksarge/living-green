@@ -1,10 +1,13 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
+import { UserContext } from "./Contexts/UserContext";
 import ArticleCard from "./ArticleCard";
 import CreateArticle from "./CreateArticle";
 
-function Articles ({user}) {
+function Articles ({}) {
     const [articles, setArticles] = useState([])
     const [refresh, setRefresh] = useState([true])
+
+    const {user, setUser} = useContext(UserContext)
 
     useEffect(() => {
         fetch('/articles')

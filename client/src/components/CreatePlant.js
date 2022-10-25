@@ -126,7 +126,9 @@ function CreatePlant({climates, addPlant}) {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={handleAddPlant}>Add</Button>
+          <Button variant="primary" onClick={handleAddPlant}>
+            Add
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

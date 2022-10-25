@@ -1,11 +1,13 @@
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
+import { UserContext } from './Contexts/UserContext';
 import UserPlantCard from './UserPlantCard';
 
-function Home({user}) {
+function Home() {
     const [plants, setPlants] = useState([])
     const [refreshPlants, setRefreshPlants] = useState(true)
 
-    
+    const {user, setUser} = useContext(UserContext)
+
     useEffect(() => {
         fetch(`/myplants/${user.id}`)
         .then(res => res.json())
