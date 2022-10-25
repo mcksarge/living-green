@@ -14,7 +14,7 @@ class PlantsController < ApplicationController
 
     def create
         plant = Plant.create(plant_params)
-        render json: plant, include: [:climate], status: :created
+        render json: plant, include: [:climate, :users, :user_plants], status: :created
     end
 
     def destroy

@@ -66,11 +66,12 @@
   background-color: #edf4f2;
   display: flex;
   width: 75%;
-  height: 18em;
+  height: 35em;
   margin: auto;
   padding: 10px;
   flex-direction: row;
   max-height: 1000px;
+  flex-wrap: wrap;
   align-content: flex-start;
   overflow: scroll;
 }

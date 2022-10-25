@@ -57,90 +57,89 @@ function PlantCard({user, plant, onDeletePlant}) {
         })
     }
     /********* *********/
-  
-  
-    return (
-        <>
-            <div className="plant-card" onClick={handleShow}>
-                <img className="plant-card-img" alt={plant.name} src={plant.image}></img>
-                <h4>{plant.name}</h4>
-            </div>
-    
-            <Modal
-            show={show}
-            onHide={handleClose}
-            backdrop="static"
-            keyboard={false}
-            >
-            <Modal.Header closeButton>
-                <Modal.Title>{plant.name}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <div className="plant-info-cont">
-                    <div className="plant-info">
-                        <div className="plant-info-img-cont">
-                            <img src={plant.image} alt={plant.name} className="plant-info-img"></img>
-                        </div>
-                    </div>
-                    <br></br>
-                    <div className="plant-info-summary">
-                        <p className="plant-summary" >
-                            {plant.summary}
-                        </p>
-                    </div>
-                    <br></br>
-                    <div className="plant-info">
-                        <h4>Light requirements:</h4>
-                        <div className="plant-info-light">
-                            <p className="plant-light">
-                                {plant.light}
-                            </p>
-                        </div>
-                    </div>
-                    <br></br>
-                    <div className="plant-info">
-                        <h4>Watering recommendations:</h4>
-                        <div className="plant-info-water">
-                            <p className="plant-water">
-                                {plant.water}
-                            </p>
-                        </div>
-                    </div>
-                    <br></br>
-                    <div className="plant-info">
-                        <h4>Soil recommendations:</h4>
-                        <div className="plant-info-soil">
-                            <p className="plant-soil">
-                                {plant.soil}
-                            </p>
-                        </div>
-                    </div>
-                    <br></br>
-                    <div className="plant-info">
-                        <h4>Native Climate:</h4>
-                        <div className="plant-info-climate">
-                            <p className="plant-climate">
-                                {plant.climate.name}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={handleAdd}>
-                    Add to your list
-                </Button>
-                <Button className="plant-info-delete-btn" onClick={handleDelete}>
-                    Delete
-                </Button>
-                <Button variant="secondary" onClick={handleClose}>
-                    Close
-                </Button>
-            </Modal.Footer>
-            </Modal>
-        </>
-    )
 
+        return (
+            <>
+                <div className="plant-card" onClick={handleShow}>
+                    <img className="plant-card-img" alt={plant.name} src={plant.image}></img>
+                    <h4>{plant.name}</h4>
+                </div>
+        
+                <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+                >
+                <Modal.Header closeButton>
+                    <Modal.Title>{plant.name}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="plant-info-cont">
+                        <div className="plant-info">
+                            <div className="plant-info-img-cont">
+                                <img src={plant.image} alt={plant.name} className="plant-info-img"></img>
+                            </div>
+                        </div>
+                        <br></br>
+                        <div className="plant-info-summary">
+                            <p className="plant-summary" >
+                                {plant.summary}
+                            </p>
+                        </div>
+                        <br></br>
+                        <div className="plant-info">
+                            <h4>Light requirements:</h4>
+                            <div className="plant-info-light">
+                                <p className="plant-light">
+                                    {plant.light}
+                                </p>
+                            </div>
+                        </div>
+                        <br></br>
+                        <div className="plant-info">
+                            <h4>Watering recommendations:</h4>
+                            <div className="plant-info-water">
+                                <p className="plant-water">
+                                    {plant.water}
+                                </p>
+                            </div>
+                        </div>
+                        <br></br>
+                        <div className="plant-info">
+                            <h4>Soil recommendations:</h4>
+                            <div className="plant-info-soil">
+                                <p className="plant-soil">
+                                    {plant.soil}
+                                </p>
+                            </div>
+                        </div>
+                        <br></br>
+                        <div className="plant-info">
+                            <h4>Native Climate:</h4>
+                            <div className="plant-info-climate">
+                                <p className="plant-climate">
+                                    {plant.climate.name}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={handleAdd}>
+                        Add to your list
+                    </Button>
+                    <Button className="plant-info-delete-btn" onClick={handleDelete}>
+                        Delete
+                    </Button>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+                </Modal>
+            </>
+        )
+  
 }
 
 export default PlantCard;
