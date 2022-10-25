@@ -25,7 +25,6 @@ function App() {
   }
   /**************** */
 
-
   //Handles logout of user
   function handleLogout() {
     setUser(null)

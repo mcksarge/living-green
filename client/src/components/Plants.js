@@ -17,6 +17,8 @@ function Plants ({user}) {
         setRefreshPlants(false)
     }, [refreshPlants])
 
+    
+
     // Fetches climates for dropdown selection
     useEffect(() => {
         fetch("/climates")
@@ -72,7 +74,7 @@ function Plants ({user}) {
         )
     })
 
-
+    
 
     return (
         <>

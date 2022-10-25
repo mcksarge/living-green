@@ -14,7 +14,7 @@ function UserPlantCard({onDelete, userPlant}) {
 
     //Removes plant from user list
     function handleRemove() {
-        console.log(userPlant.id)
+        console.log(userPlant)
         fetch(`/myplants/remove/${userPlant.id}`, {
             method: "DELETE"
         })
@@ -85,14 +85,6 @@ function UserPlantCard({onDelete, userPlant}) {
                         </div>
                     </div>
                     <br></br>
-                    <div className="plant-info">
-                        <h4>Native Climate:</h4>
-                        <div className="plant-info-climate">
-                            <p className="plant-climate">
-                                {plant.climate_id}
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </Modal.Body>
             <Modal.Footer>

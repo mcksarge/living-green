@@ -4,12 +4,12 @@ class PlantsController < ApplicationController
 
     def index
         plants = Plant.order(name: :asc)
-        render json: plants, include: :climate
+        render json: plants, include: [:climate, :users, :user_plants]
     end
 
     def show
         plant = Plant.find_by(id: params[:id])
-        render json: plant, include: :climate
+        render json: plant, include: [:climate, :users, :user_plants]
     end
 
     def create
