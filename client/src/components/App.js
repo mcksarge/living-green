@@ -4,13 +4,13 @@ import NavBar from './NavBar'
 import Plants from './Plants';
 import Articles from './Articles';
 import LoginPage from './LoginPage';
+import EditAccount from './EditAccount';
 import { UserContext } from './Contexts/UserContext';
 import { PlantContext } from './Contexts/PlantContext';
 import {Routes, Route} from 'react-router-dom';
 import {useEffect, useState, useContext} from 'react';
 
 function App() {
-  const [articles, setArticles] = useState([])
   const [user, setUser] = useState(null)
   const [plants, setPlants] = useState([])
 
@@ -75,7 +75,8 @@ return (
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/plants" element={<Plants />} />
-          <Route path="/articles" element={<Articles articles={articles} />} />
+          <Route path="/articles" element={<Articles />} />
+          <Route path="/account" element={<EditAccount />} />
         </Routes>
         </PlantContext.Provider>
         </UserContext.Provider>

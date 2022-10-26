@@ -19,7 +19,10 @@ function NavBar({onLogout}) {
         <>
             <div id="navbar-container">
                 <h1 id="navbar-title">Living Greenery</h1>
-                <h4 id="logged-in-user">Logged in as: {user.name}</h4>
+                <div id="account-display">
+                    <h4 id="logged-in-user">Logged in as: {user.name}</h4>
+                    <NavLink to="/account" id="navlink-account-edit">Edit Account</NavLink>
+                </div>
                 <div id="navbar-links">
                     <NavLink to="/home" exact className="navlink">Home</NavLink>
                     <NavLink to="/plants" className="navlink">Plants</NavLink>

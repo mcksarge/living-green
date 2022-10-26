@@ -47,6 +47,20 @@
   color: black;
 }
 
+#account-display {
+  display: flex;
+  justify-content: space-between;
+}
+
+#navlink-account-edit {
+  padding: .50em;
+  background-color: #7c8363;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
 /* *********** */
 
 /* Home */
