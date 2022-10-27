@@ -61,6 +61,11 @@
   text-decoration: none;
 }
 
+#navlink-account-edit:hover {
+  background-color: #edf4f2;
+  color: black;
+}
+
 /* *********** */
 
 /* Home */
@@ -232,63 +237,79 @@
 
 /* Articles */
 
-  #articles-cont {
-    border: 10px solid;
-    border-top-color: #7c8363;
-    border-left-color: #31473a;
-    border-right-color: #31473a;
-    border-bottom-color: #7c8363;
-    background-color: #edf4f2;
-    display: flex;
-    max-width: 50%;
-    height: 50em;
-    margin: auto;
-    padding: 10px;
-    flex-direction: row;
-    max-height: 1000px;
-    justify-content: left;
-    align-content: flex-start;
-    flex-flow: column wrap;
-    overflow: scroll;
-  }
+#articles-cont {
+  border: 10px solid;
+  border-top-color: #7c8363;
+  border-left-color: #31473a;
+  border-right-color: #31473a;
+  border-bottom-color: #7c8363;
+  background-color: #edf4f2;
+  display: flex;
+  max-width: 50%;
+  height: 50em;
+  margin: auto;
+  padding: 10px;
+  flex-direction: row;
+  max-height: 1000px;
+  justify-content: left;
+  align-content: flex-start;
+  flex-flow: column wrap;
+  overflow: scroll;
+}
 
-  .article-card-link {
-    margin-inline-end: auto;
-    padding: .50em;
-    margin-right: 5px;
-    background-color: #7c8363;
-    color: white;
-    font-size: larger;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-bottom: 5px;
-  }
+.article-card-link {
+  margin-inline-end: auto;
+  padding: .50em;
+  margin-right: 5px;
+  background-color: #7c8363;
+  color: white;
+  font-size: larger;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
 
-  .article-link {
-    margin-inline-end: auto;
-    margin-right: 5px;
-    color: white;
-    font-size: larger;
-    text-decoration: none;
-    border-radius: 5px;
-  }
+.article-link {
+  margin-inline-end: auto;
+  margin-right: 5px;
+  color: white;
+  font-size: larger;
+  text-decoration: none;
+  border-radius: 5px;
+}
 
-  .article-card-link:hover {
-    background-color: #31473a;
-    cursor: pointer;
-  }
+.article-card-link:hover {
+  background-color: #31473a;
+  cursor: pointer;
+}
 
-  .article-link:hover {
-    color: white;
-  }
+.article-link:hover {
+  color: white;
+}
 
-  #add-article-button {
-    padding: .50em;
-    background-color: #31473a;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    border-color: #31473a
-  }
+#add-article-button {
+  padding: .50em;
+  background-color: #31473a;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  border-color: #31473a
+}
+
+/**************/
+
+/* EditAccount */
+
+#edit-account-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#update-user-btn {
+  width: 100px;
+  margin: auto;
+  margin-top: 10px;
+}
 
 /**************/

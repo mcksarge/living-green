@@ -5,7 +5,8 @@ import Modal from 'react-bootstrap/Modal';
 
 function ArticleCard ({article, user, onDeleteArticle}) {
     const [show, setShow] = useState(false);
-    const [author, setAuthor] = article.user.name
+    const [author, setAuthor] = useState(article.user.name)
+
 
     // Shows or hides the popup window
     const handleClose = () => setShow(false);
@@ -73,7 +74,7 @@ function ArticleCard ({article, user, onDeleteArticle}) {
                     <Modal.Title>{article.title}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h5>Author: {article.user.name}</h5>
+                    <h5>Author: {author}</h5>
                     <p>{article.body}</p>
                 </Modal.Body>
                 <Modal.Footer>
