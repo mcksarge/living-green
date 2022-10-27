@@ -1,6 +1,6 @@
 class PlantsController < ApplicationController
     skip_before_action :verify_authenticity_token
-    skip_before_action :authorize
+
 
     def index
         plants = Plant.order(name: :asc)
@@ -14,7 +14,11 @@ class PlantsController < ApplicationController
 
     def create
         plant = Plant.create(plant_params)
-        render json: plant, include: [:climate, :users, :user_plants], status: :created
+        if plant.valid? 
+            render json: plant, include: [:climate, :users, :user_plants], status: :created
+        else
+            render json: {errors: ["Invalid Data", "Name must be unique", "All fields are required"]}, status: :unprocessable_entity
+        end
     end
 
     def destroy

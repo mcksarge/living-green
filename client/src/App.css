@@ -5,6 +5,12 @@
   margin: auto;
 }
 
+/* Errors */
+
+.errors {
+  list-style: none;
+}
+
 /* NavBar */
 
 #navbar-container {
@@ -229,7 +235,7 @@
 /*Login*/
 
 #login-submit-btn {
-  width: 10%;
+  width: 90px;
   margin: auto;
 }
 
@@ -294,6 +300,11 @@
   text-decoration: none;
   border-radius: 5px;
   border-color: #31473a
+}
+
+.article-edit-body-cont {
+  width: 90%;
+  height: 30em;
 }
 
 /**************/

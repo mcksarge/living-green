@@ -16,7 +16,6 @@ function LoginPage({onLogin}) {
     function onSubmit(e) {
         e.preventDefault();
 
-
         if(!createAccount) {
             const user={username, password}
             fetch('/login', {
@@ -56,6 +55,7 @@ function LoginPage({onLogin}) {
         }
        
     }
+    /************************************** */
 
 
     function handleShowLogin(){
@@ -73,13 +73,13 @@ function LoginPage({onLogin}) {
     if(!createAccount){
         return (
             <div className="new-account-cont">
-                {/* {errors.length > 0 && (
-                    <ul style={{ color: "red" }}>
+                {errors.length > 0 && (
+                    <ul className="errors" style={{ color: "red" }}>
                     {errors.map((error) => (
                         <li key={error}>{error.login}</li>
                     ))}
                     </ul>
-                )} */}
+                )}
                 <h2>Login</h2>
                 <form id="new-account-input-cont" onSubmit={onSubmit}>
                     <input onChange={(e) => setUsername(e.target.value)} className="new-account-input" placeholder="Username"></input>

@@ -30,6 +30,7 @@ function Articles ({}) {
                     article={article}
                     user={user}
                     onDeleteArticle={onArticleChange}
+                    onRefresh={onArticleChange}
                 />
             </>
         )

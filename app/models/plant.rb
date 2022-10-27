@@ -3,4 +3,5 @@ class Plant < ApplicationRecord
     has_many :user_plants, dependent: :delete_all
     has_many :users, through: :user_plants
     validates :name, :soil, :image, :light, :water, :climate_id, :summary, presence: true
+    validates :name, :image, uniqueness: true
 end

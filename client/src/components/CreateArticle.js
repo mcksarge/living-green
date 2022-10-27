@@ -6,15 +6,26 @@ function CreateArticle({user, addArticle}) {
   const [show, setShow] = useState(false);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [errors, setErrors] = useState([])
 
   // Shows or hides the popup window
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false) 
+    setErrors([])
+  };
   const handleShow = () => setShow(true);
+
+  //Resets form data
+  function resetFormData(){
+    setTitle("")
+    setBody("")
+  }
 
   // Add Plant to catalog
   function handleAddArticle(e) {
     const article = {"title": title, "body": body, "user_id": user.id}
-    
+    setErrors([])
+
     fetch('/articles', {
       method: "POST",
       headers: {
@@ -22,9 +33,17 @@ function CreateArticle({user, addArticle}) {
       },
       body: JSON.stringify(article)
     })
-    .then((res) => res.json())
-    .then((newArticle) => addArticle(newArticle))
-    handleClose()
+    .then(res => {
+      if (res.ok) {
+        res.json().then((newArticle) => {
+          addArticle(newArticle)
+          handleClose()
+          resetFormData()
+        })
+      } else {
+        res.json().then(errorData => {setErrors(errorData.errors)})
+      }
+    })
   }
 
   return (
@@ -43,6 +62,13 @@ function CreateArticle({user, addArticle}) {
           <Modal.Title>Add an Article</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+        {errors.length > 0 && (
+            <ul className="errors" style={{ color: "red" }}>
+            {errors.map((error) => (
+                <li key={error}>{error}</li>
+            ))}
+            </ul>
+          )}
             <form className="add-article-form">
                 <div className="article-form-cont">
                     <div className="article-form-label">

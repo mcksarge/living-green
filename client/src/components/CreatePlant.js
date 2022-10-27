@@ -11,14 +11,26 @@ function CreatePlant({climates, addPlant}) {
   const [water, setWater] = useState("")
   const [climate, setClimate] = useState("")
   const [summary, setSummary] = useState("")
+  const [errors, setErrors] = useState([])
 
   // Shows or hides the popup window
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  function resetFormData() {
+    setName("")
+    setSoil("")
+    setImage("")
+    setLight("")
+    setWater("")
+    setClimate("")
+    setSummary("")
+  }
+
   // Add Plant to catalog
   function handleAddPlant(e) {
     const plant = {"name": name, "soil": soil, "image": image, "light": light, "water": water, "climate_id": climate, "summary": summary}
+    setErrors([])
     
     fetch('/plants', {
       method: "POST",
@@ -27,9 +39,17 @@ function CreatePlant({climates, addPlant}) {
       },
       body: JSON.stringify(plant)
     })
-    .then((res) => res.json())
-    .then((newPlant) => addPlant(newPlant))
-    handleClose()
+    .then(res => {
+      if (res.ok) {
+        res.json().then((newPlant) => {
+          addPlant(newPlant)
+          handleClose()
+          resetFormData()
+        })
+      } else {
+        res.json().then(errorData => {setErrors(errorData.errors)})
+      }
+    })
   }
 
 
@@ -49,6 +69,13 @@ function CreatePlant({climates, addPlant}) {
           <Modal.Title>Add a plant</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {errors.length > 0 && (
+            <ul className="errors" style={{ color: "red" }}>
+            {errors.map((error) => (
+                <li key={error}>{error}</li>
+            ))}
+            </ul>
+          )}
             <form className="add-plant-form">
                 <div className="plant-form-cont">
                     <div className="plant-form-label">
