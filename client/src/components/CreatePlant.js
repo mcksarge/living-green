@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { UserContext } from "./Contexts/UserContext";
 
 function CreatePlant({climates, addPlant}) {
   const [show, setShow] = useState(false);
@@ -13,6 +14,8 @@ function CreatePlant({climates, addPlant}) {
   const [summary, setSummary] = useState("")
   const [checked, setChecked] = useState(false)
   const [errors, setErrors] = useState([])
+
+  const {user, setUser} = useContext(UserContext)
 
   // Shows or hides the popup window
   const handleClose = () => {
@@ -40,26 +43,51 @@ function CreatePlant({climates, addPlant}) {
   // Add Plant to catalog
   function handleAddPlant() {
     const plant = {"name": name, "soil": soil, "image": image, "light": light, "water": water, "climate_id": climate, "summary": summary}
+    const userID = user.id
     setErrors([])
     
-    fetch('/plants', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(plant)
-    })
-    .then(res => {
-      if (res.ok) {
-        res.json().then((newPlant) => {
-          addPlant(newPlant)
-          handleClose()
-          resetFormData()
+    if(checked) {
+      fetch('/plants', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          plant,
+          userID
         })
-      } else {
-        res.json().then(errorData => {setErrors(errorData.errors)})
-      }
-    })
+      })
+      .then(res => {
+        if (res.ok) {
+          res.json().then((newPlant) => {
+            addPlant(newPlant)
+            handleClose()
+            resetFormData()
+          })
+        } else {
+          res.json().then(errorData => {setErrors(errorData.errors)})
+        }
+      })
+    } else {
+      fetch('/plants', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({plant})
+      })
+      .then(res => {
+        if (res.ok) {
+          res.json().then((newPlant) => {
+            addPlant(newPlant)
+            handleClose()
+            resetFormData()
+          })
+        } else {
+          res.json().then(errorData => {setErrors(errorData.errors)})
+        }
+      })
+    }
   }
 
 

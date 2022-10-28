@@ -14,8 +14,15 @@ class PlantsController < ApplicationController
 
     def create
         plant = Plant.create(plant_params)
+        userID = params[:userID]
+        userPlant = {"user_id": userID, "plant_id": plant.id}
+
+        if userPlant
+            userPlant = UserPlant.create(userPlant)
+        end
+
         if plant.valid? 
-            render json: plant, include: [:climate, :users, :user_plants], status: :created
+            render json: plant, include: [:climate, :users], status: :created
         else
             render json: {errors: ["Invalid Data", "Name must be unique", "All fields are required"]}, status: :unprocessable_entity
         end
@@ -30,7 +37,7 @@ class PlantsController < ApplicationController
     private
 
     def plant_params
-        params.require(:plant).permit(:name, :soil, :image, :light, :water, :climate_id, :summary, user_plants_attributes: [:id, :user_id, :plant_id]) 
+        params.require(:plant).permit(:name, :soil, :image, :light, :water, :climate_id, :summary, user_plants_attributes: [:user_id]) 
     end
 
 end
