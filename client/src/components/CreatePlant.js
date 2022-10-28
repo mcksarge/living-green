@@ -15,8 +15,16 @@ function CreatePlant({climates, addPlant}) {
   const [errors, setErrors] = useState([])
 
   // Shows or hides the popup window
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false)
+    setChecked(false)
+  };
   const handleShow = () => setShow(true);
+
+  //Handles checkbox
+  const handleChecked = () => {
+    setChecked(!checked)
+  }
 
   // Resets form data
   function resetFormData() {
@@ -29,14 +37,8 @@ function CreatePlant({climates, addPlant}) {
     setSummary("")
   }
 
-  // Handles checkbox
-  const handleChecked = () => {
-    setChecked(!checked)
-    console.log(checked)
-  }
-  console.log(checked)
   // Add Plant to catalog
-  function handleAddPlant(e) {
+  function handleAddPlant() {
     const plant = {"name": name, "soil": soil, "image": image, "light": light, "water": water, "climate_id": climate, "summary": summary}
     setErrors([])
     
@@ -158,7 +160,7 @@ function CreatePlant({climates, addPlant}) {
                 <br></br>
                 <div className="plant-form-cont">
                     <div className="plant-form-label-checkbox">
-                      <input className="add-plant-checkbox" type="checkbox" checked={checked} onChange={handleChecked} />
+                      <input className="add-plant-checkbox" type="checkbox" onChange={handleChecked} />
                       <label>
                           Add this plant to your list?
                       </label>
