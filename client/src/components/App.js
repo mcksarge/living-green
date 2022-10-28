@@ -6,13 +6,11 @@ import Articles from './Articles';
 import LoginPage from './LoginPage';
 import EditAccount from './EditAccount';
 import { UserContext } from './Contexts/UserContext';
-import { PlantContext } from './Contexts/PlantContext';
 import {Routes, Route} from 'react-router-dom';
 import {useEffect, useState, useContext} from 'react';
 
 function App() {
   const [user, setUser] = useState(null)
-  const [plants, setPlants] = useState([])
   const [errors, setErrors] = useState([])
 
   // Auto Login
@@ -27,12 +25,6 @@ function App() {
     })
   }, []);
   /************************* */  
-
-  useEffect(() => {
-    fetch("/plants")
-    .then((res) => res.json())
-    .then((data) => setPlants(data))
-    }, [])
 
   //Handles login of user
   function handleLogin(user) {
@@ -63,7 +55,6 @@ function App() {
   return (
     <div className="App">
       <UserContext.Provider value={{user, setUser}}>
-      <PlantContext.Provider value={{plants, setPlants}}>
         <NavBar onLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -72,7 +63,6 @@ function App() {
           <Route path="/articles" element={<Articles />} />
           <Route path="/account" element={<EditAccount />} />
         </Routes>
-        </PlantContext.Provider>
         </UserContext.Provider>
     </div>
   );

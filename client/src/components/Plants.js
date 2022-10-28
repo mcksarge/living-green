@@ -2,23 +2,22 @@ import {useState, useEffect, useContext} from 'react';
 import PlantCard from './PlantCard';
 import CreatePlant from './CreatePlant';
 import { UserContext } from './Contexts/UserContext';
-import { PlantContext } from './Contexts/PlantContext';
 
 
 function Plants () {
     const [climates, setClimates] = useState([])
     const [query, setQuery] = useState("")
-
+    const [plants, setPlants] = useState([])
+    const [refreshPlants, setRefreshPlants] = useState(true)
     const {user, setUser} = useContext(UserContext)
-    const {plants, setPlants} = useContext(PlantContext)
 
-    // //Fetches Plants
-    // useEffect(() => {
-    //     fetch("/plants")
-    //     .then((res) => res.json())
-    //     .then((data) => setPlants(data))
-    //     setRefreshPlants(false)
-    // }, [refreshPlants])
+    //Fetches Plants
+    useEffect(() => {
+        fetch("/plants")
+        .then((res) => res.json())
+        .then((data) => setPlants(data))
+        setRefreshPlants(false)
+    }, [refreshPlants])
 
     
 

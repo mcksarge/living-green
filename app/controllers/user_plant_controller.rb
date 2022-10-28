@@ -20,7 +20,11 @@ class UserPlantController < ApplicationController
 
     def create
         userPlant = UserPlant.create(userPlant_params)
-        render json: userPlant
+        if userPlant.valid?
+            render json: userPlant, status: :created
+        else
+            render json: {errors: ["This plant is already in your list"]}, status: :unprocessable_entity
+        end
     end
 
     def destroy

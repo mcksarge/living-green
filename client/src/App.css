@@ -11,6 +11,12 @@
   list-style: none;
 }
 
+.errors_userPlant{
+  list-style: none;
+  margin-left: -40px;
+  inline-size: 200px;
+}
+
 /* NavBar */
 
 #navbar-container {
@@ -179,6 +185,10 @@
 
 #plant-sort {
   margin-right: 5px;
+}
+
+.add-plant-checkbox {
+  margin-right: 10px;
 }
 
 /*************/

@@ -5,10 +5,15 @@ import Modal from 'react-bootstrap/Modal';
 
 function PlantCard({user, plant, onDeletePlant}) {
     const [show, setShow] = useState(false);
+    const [errors, setErrors] = useState([])
+    const [buttonText, setButtonText] = useState("Add to your list")
   
 
     // Shows or hides the popup window
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false)
+        setButtonText("Add to your list")
+    };
     const handleShow = () => setShow(true);
 
     // Deletes plant
@@ -37,26 +42,14 @@ function PlantCard({user, plant, onDeletePlant}) {
             },
             body: JSON.stringify(userPlant)
         })
-        .then(res => res.json())
-        .then(data => console.log(data))
-    }
-
-     //Removes plant to users plant list
-     function onRemoveUser() {
-        const userPlant = plant.user_plants.filter((user_plant) => user_plant.user_id == user.id && user_plant.plant_id == plant.id).map(filteredUserPlant => (
-            filteredUserPlant.id
-        ))
-
-        fetch(`/myplants/remove/${userPlant}`, {
-            method: "DELETE"
-        })
-        .then((res) => {
+        .then(res => {
             if(res.ok){
-                onDeletePlant()
+                res.json().then(() => setButtonText("Added!"))
+            } else {
+                res.json().then(errorData => setErrors(errorData.errors))
             }
         })
     }
-    /********* *********/
 
         return (
             <>
@@ -126,8 +119,15 @@ function PlantCard({user, plant, onDeletePlant}) {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
+                {errors.length > 0 && (
+                    <ul className="errors_userPlant" style={{ color: "red" }}>
+                    {errors.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                    </ul>
+                )}
                     <Button onClick={handleAdd}>
-                        Add to your list
+                        {buttonText}
                     </Button>
                     <Button className="plant-info-delete-btn" onClick={handleDelete}>
                         Delete
