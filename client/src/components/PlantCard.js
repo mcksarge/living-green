@@ -27,8 +27,8 @@ function PlantCard({user, plant, onDeletePlant}) {
                 handleClose()
             }
         })
-
     }
+    /********************* */
 
     //Adds plant to users plant list
     function handleAdd() {
@@ -50,6 +50,7 @@ function PlantCard({user, plant, onDeletePlant}) {
             }
         })
     }
+    /****************** */
 
         return (
             <>

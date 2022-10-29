@@ -11,6 +11,7 @@ function UserPlantCard({onDelete, userPlant}) {
     // Shows or hides the popup window
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    /********** */
 
     //Removes plant from user list
     function handleRemove() {
@@ -25,8 +26,7 @@ function UserPlantCard({onDelete, userPlant}) {
             }
         })
     }
-
-
+    /***************** */
 
     return (
         <>

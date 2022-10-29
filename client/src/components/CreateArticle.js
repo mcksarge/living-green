@@ -14,17 +14,19 @@ function CreateArticle({user, addArticle}) {
     setErrors([])
   };
   const handleShow = () => setShow(true);
+  /********************** */
 
   //Resets form data
   function resetFormData(){
     setTitle("")
     setBody("")
   }
+  /****************** */
 
   // Add Plant to catalog
   function handleAddArticle(e) {
     const article = {"title": title, "body": body, "user_id": user.id}
-    setErrors([])
+    setErrors([]) //Resets errors
 
     fetch('/articles', {
       method: "POST",
@@ -45,6 +47,7 @@ function CreateArticle({user, addArticle}) {
       }
     })
   }
+  /************************** */
 
   return (
     <>

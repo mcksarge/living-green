@@ -14,8 +14,9 @@ function ArticleCard ({article, user, onDeleteArticle, onRefresh}) {
     // Shows or hides the popup window
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    /***************** */
 
-
+    // Handles delete of article
     function handleDelete() {
         fetch(`/articles/${article.id}`, {
             method: "DELETE"
@@ -26,14 +27,12 @@ function ArticleCard ({article, user, onDeleteArticle, onRefresh}) {
                 handleClose()
             }
         })
-
     }
+    /*********************** */
 
      //Changes Article
      function handleSubmit(){
         let updatedArticle = {title, body}
-
-    
 
         fetch(`/articles/${article.id}`, {
             method: "PATCH",
@@ -46,7 +45,7 @@ function ArticleCard ({article, user, onDeleteArticle, onRefresh}) {
         handleClose()
         onRefresh()
     }
-
+    /***************************** */
     
     // If current user matches author, can delete article
     if(user.id == article.user_id){
@@ -118,8 +117,7 @@ function ArticleCard ({article, user, onDeleteArticle, onRefresh}) {
                 </Modal>
             </>
         )
-    }
-        
+    }     
 }
 
 export default ArticleCard;

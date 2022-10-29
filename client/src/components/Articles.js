@@ -7,21 +7,24 @@ function Articles ({}) {
     const [articles, setArticles] = useState([])
     const [refresh, setRefresh] = useState([true])
 
-    const {user, setUser} = useContext(UserContext)
+    const {user} = useContext(UserContext)
 
+    // Fetches articles
     useEffect(() => {
         fetch('/articles')
         .then((res) => res.json())
         .then((data) => setArticles(data))
         setRefresh(false)
     }, [refresh])
+    /************************* */
 
+    // Refreshes articles after change
     function onArticleChange(){
         setRefresh(true)
-      }
-    
+    }
+    /********************** */
 
-
+    // Maps articles to Article Card
     const allArticles = articles.map((article, i) => {
         return (
             <>
@@ -35,6 +38,7 @@ function Articles ({}) {
             </>
         )
     })
+    /********************** */
 
     return (
         <>

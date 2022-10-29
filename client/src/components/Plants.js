@@ -9,7 +9,7 @@ function Plants () {
     const [query, setQuery] = useState("")
     const [plants, setPlants] = useState([])
     const [refreshPlants, setRefreshPlants] = useState(true)
-    const {user, setUser} = useContext(UserContext)
+    const {user} = useContext(UserContext)
 
     //Fetches Plants
     useEffect(() => {
@@ -18,8 +18,7 @@ function Plants () {
         .then((data) => setPlants(data))
         setRefreshPlants(false)
     }, [refreshPlants])
-
-    
+    /****************** */
 
     // Fetches climates for dropdown selection
     useEffect(() => {
@@ -29,18 +28,20 @@ function Plants () {
             setClimates(data)
         })
     }, [])
+    /******************** */
 
     // Handles delete plant
     function handleDeletePlant(deletedPlant) {
         const updatedPlants = plants.filter((plant) => plant.id !== deletedPlant)
         setPlants(updatedPlants)
     }
+    /************* */
 
     //Refreshes new plants
     function addPlant(newPlant) {
         setPlants([newPlant, ...plants])
     }
-
+    /************** */
 
     //Sorts plants
     function handleSort(e) {
@@ -49,13 +50,14 @@ function Plants () {
                 return a.name > b.name ? 1 : -1
             })
             setPlants(sortedPlants)
-        } else if (e.target.value =="Z-A") {
+        } else if (e.target.value === "Z-A") {
             const sortedPlants = [...plants].sort((a, b) => {
                 return a.name < b.name ? 1 : -1
             })
             setPlants(sortedPlants)
         }
     }
+    /***************** */
 
     //Maps plants to PlantCard
     const allPlants = plants.filter((plant) => {
@@ -76,6 +78,7 @@ function Plants () {
             </>
         )
     })
+    /************************** */
 
     
 

@@ -57,7 +57,7 @@ function LoginPage({onLogin}) {
     }
     /************************************** */
 
-
+    // Either shows or hides the create account option
     function handleShowLogin(){
         if(!createAccount){
             setCreateAccount(true)
@@ -65,11 +65,8 @@ function LoginPage({onLogin}) {
             setCreateAccount(false)
         }
     }
+    /**************************** */
 
-    // const errorMessage = errors.map((error) => {
-    //     <p key={error.login}>{error.login}</p>
-    // })
-    
     if(!createAccount){
         return (
             <div className="new-account-cont">

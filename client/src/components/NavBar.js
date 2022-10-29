@@ -8,12 +8,14 @@ function NavBar({onLogout}) {
 
     const {user, setUser} = useContext(UserContext)
 
+    // Logs out user
     function handleLogout() {
         fetch("/logout", {
             method: "DELETE"
         })
         .then(() => onLogout())
     }
+    /************* */
 
     return (
         <>

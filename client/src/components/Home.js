@@ -6,8 +6,9 @@ function Home() {
     const [plants, setPlants] = useState([])
     const [refreshPlants, setRefreshPlants] = useState(true)
 
-    const {user, setUser} = useContext(UserContext)
+    const {user} = useContext(UserContext)
 
+    // Fetches users listed plants
     useEffect(() => {
         fetch(`/myplants/${user.id}`)
         .then(res => res.json())
@@ -16,14 +17,17 @@ function Home() {
             setRefreshPlants(false)
         })
     }, [])
+    /******************* */
 
+    // Deletes plant from plants array
     function handleDeletePlant(deletedPlant) {
         const updatedPlants = plants.filter((plant) => plant.id !== deletedPlant)
         setPlants(updatedPlants)
     }
+    /******************** */
 
+    // Maps plants to plant card
     const listPlants = plants.map((userPlant, i) => {
-
         if(plants.length > 0){
             return (
                 <>
@@ -39,8 +43,8 @@ function Home() {
                 <h3>No Plants</h3>
             )
         }
-
     })
+    /********************* */
 
     return (
         <>

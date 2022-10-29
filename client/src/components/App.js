@@ -7,7 +7,7 @@ import LoginPage from './LoginPage';
 import EditAccount from './EditAccount';
 import { UserContext } from './Contexts/UserContext';
 import {Routes, Route} from 'react-router-dom';
-import {useEffect, useState, useContext} from 'react';
+import {useEffect, useState} from 'react';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -47,6 +47,13 @@ function App() {
                   <h1 id="navbar-title">Living Greenery</h1>
               </div>
               <h2>Welcome to Living Greenery!</h2>
+              {errors.length > 0 && (
+                <ul className="errors" style={{ color: "red" }}>
+                {errors.map((error) => (
+                    <li key={error}>{error}</li>
+                ))}
+                </ul>
+              )}
               <LoginPage onLogin={handleLogin} />
           </>
       </div>

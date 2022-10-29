@@ -15,7 +15,7 @@ function CreatePlant({climates, addPlant}) {
   const [checked, setChecked] = useState(false)
   const [errors, setErrors] = useState([])
 
-  const {user, setUser} = useContext(UserContext)
+  const {user} = useContext(UserContext)
 
   // Shows or hides the popup window
   const handleClose = () => {
@@ -23,11 +23,13 @@ function CreatePlant({climates, addPlant}) {
     setChecked(false)
   };
   const handleShow = () => setShow(true);
+  /************************* */
 
   //Handles checkbox
   const handleChecked = () => {
     setChecked(!checked)
   }
+  /***************** */
 
   // Resets form data
   function resetFormData() {
@@ -39,6 +41,7 @@ function CreatePlant({climates, addPlant}) {
     setClimate("")
     setSummary("")
   }
+  /*************** */
 
   // Add Plant to catalog
   function handleAddPlant() {
@@ -46,7 +49,7 @@ function CreatePlant({climates, addPlant}) {
     const userID = user.id
     setErrors([])
     
-    if(checked) {
+    if(checked) { //If checked, POST sends userID, otherwise userID is excluded
       fetch('/plants', {
         method: "POST",
         headers: {
@@ -89,7 +92,7 @@ function CreatePlant({climates, addPlant}) {
       })
     }
   }
-
+  /**************** */
 
   return (
     <>

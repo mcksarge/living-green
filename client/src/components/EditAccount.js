@@ -27,6 +27,7 @@ function EditAccount(){
         .then(res => res.json())
         .then(data => setUser(data))
     }
+    /********************** */
 
     return(
         <>
