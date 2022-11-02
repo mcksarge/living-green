@@ -47,13 +47,6 @@ function App() {
                   <h1 id="navbar-title">Living Greenery</h1>
               </div>
               <h2>Welcome to Living Greenery!</h2>
-              {errors.length > 0 && (
-                <ul className="errors" style={{ color: "red" }}>
-                {errors.map((error) => (
-                    <li key={error}>{error}</li>
-                ))}
-                </ul>
-              )}
               <LoginPage onLogin={handleLogin} />
           </>
       </div>
@@ -61,7 +54,7 @@ function App() {
   } else if (user) {
   return (
     <div className="App">
-      <UserContext.Provider value={{user, setUser}}>
+      <UserContext.Provider value={{user}}>
         <NavBar onLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Home />} />

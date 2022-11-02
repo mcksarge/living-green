@@ -55,6 +55,16 @@ function Plants () {
                 return a.name < b.name ? 1 : -1
             })
             setPlants(sortedPlants)
+        } else if (e.target.value === "Climate A-Z") {
+            const sortedPlants = [...plants].sort((a, b) => {
+                return a.climate.name > b.climate.name ? 1 : -1
+            })
+            setPlants(sortedPlants)
+        } else if (e.target.value === "Climate Z-A") {
+            const sortedPlants = [...plants].sort((a, b) => {
+                return a.climate.name < b.climate.name ? 1 : -1
+            })
+            setPlants(sortedPlants)
         }
     }
     /***************** */
@@ -94,6 +104,8 @@ function Plants () {
                 <select onChange={handleSort}>
                     <option>A-Z</option>
                     <option>Z-A</option>
+                    <option>Climate A-Z</option>
+                    <option>Climate Z-A</option>
                 </select>
             </div>
             <div id="plant-card-cont">

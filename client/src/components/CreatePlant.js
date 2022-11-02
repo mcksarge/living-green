@@ -45,11 +45,21 @@ function CreatePlant({climates, addPlant}) {
 
   // Add Plant to catalog
   function handleAddPlant() {
-    const plant = {"name": name, "soil": soil, "image": image, "light": light, "water": water, "climate_id": climate, "summary": summary}
+
     const userID = user.id
     setErrors([])
     
     if(checked) { //If checked, POST sends userID, otherwise userID is excluded
+      const plant = {
+        "name": name,
+        "soil": soil, 
+        "image": image, 
+        "light": light, 
+        "water": water, 
+        "summary": summary,
+        "user_plants_attributes": [{"user_id": userID}],
+        "climate_attributes": {"name": climate.charAt(0).toUpperCase() + climate.slice(1)}
+      }
       fetch('/plants', {
         method: "POST",
         headers: {
@@ -72,6 +82,15 @@ function CreatePlant({climates, addPlant}) {
         }
       })
     } else {
+      const plant = {
+        "name": name,
+        "soil": soil, 
+        "image": image, 
+        "light": light, 
+        "water": water, 
+        "summary": summary,
+        "climate_attributes": {"name": climate.charAt(0).toUpperCase() + climate.slice(1)}
+      }
       fetch('/plants', {
         method: "POST",
         headers: {
@@ -172,11 +191,18 @@ function CreatePlant({climates, addPlant}) {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                         Climate*
                     </label>
-                    <br></br>
-                    <select name="climate" onChange={(e) => setClimate(e.target.value)} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                      <option></option>
-                      {climates.map((climate, i) => <option key={i} value={climate.id}>{climate.name}</option>)}
-                    </select>
+                    {/* <div className="plant-form-input">
+                      <select name="summary" onChange={(e) => setClimate(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Climate (eg. Tropical)">
+                        <option></option>
+                        {climates.map((climate, i) => <option key={i} value={climate.id}>{climate.name}</option>)}
+                      </select>
+                    </div> */}
+                    {/* <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        Or add a new climate
+                    </label> */}
+                    <div className="plant-form-input">
+                      <input name="summary" onChange={(e) => setClimate(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Climate (eg. Tropical)" />
+                    </div>
                 </div>
                 <div className="plant-form-cont">
                     <div className="plant-form-label">

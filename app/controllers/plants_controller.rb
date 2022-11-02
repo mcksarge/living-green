@@ -13,14 +13,8 @@ class PlantsController < ApplicationController
     end
 
     def create
-        plant = Plant.create(plant_params)
-        userID = params[:userID]
-        userPlant = {"user_id": userID, "plant_id": plant.id}
 
-        if userPlant
-            userPlant = UserPlant.create(userPlant)
-        end
-
+        plant = Plant.create!(plant_params)
         if plant.valid? 
             render json: plant, include: [:climate, :users], status: :created
         else
@@ -37,7 +31,7 @@ class PlantsController < ApplicationController
     private
 
     def plant_params
-        params.require(:plant).permit(:name, :soil, :image, :light, :water, :climate_id, :summary, user_plants_attributes: [:user_id]) 
+        params.require(:plant).permit(:name, :soil, :image, :light, :water, :summary, user_plants_attributes: [:user_id], climate_attributes: [:id, :name]) 
     end
 
 end
