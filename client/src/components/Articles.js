@@ -1,13 +1,13 @@
 import {useState, useEffect, useContext} from "react";
-import { UserContext } from "./Contexts/UserContext";
 import ArticleCard from "./ArticleCard";
 import CreateArticle from "./CreateArticle";
+import {useSelector} from 'react-redux';
 
 function Articles ({}) {
     const [articles, setArticles] = useState([])
     const [refresh, setRefresh] = useState([true])
 
-    const {user} = useContext(UserContext)
+    const user = useSelector((state) => state.user)
 
     // Fetches articles
     useEffect(() => {

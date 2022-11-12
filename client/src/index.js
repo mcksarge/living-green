@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,10 +7,11 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import { UserContext } from './components/Contexts/UserContext';
-import rootReducer from './reducers/rootReducer';
+import userReducer from './reducers/userReducer';
 
-const store = createStore(rootReducer);
+
+const store = createStore(userReducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,12 +1,13 @@
-import { useContext } from 'react';
 import {NavLink} from 'react-router-dom';
-import { UserContext } from './Contexts/UserContext';
+import {useSelector} from 'react-redux';
+import {useState} from 'react';
 
 
 
 function NavBar({onLogout}) {
-
-    const {user, setUser} = useContext(UserContext)
+    const [refreshName, setRefreshName] = useState(false)
+    const user = useSelector((state) => state.user)
+    
 
     // Logs out user
     function handleLogout() {

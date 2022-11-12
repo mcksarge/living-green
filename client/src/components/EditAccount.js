@@ -1,11 +1,14 @@
 import {useContext, useState} from 'react';
-import { UserContext } from './Contexts/UserContext';
+import {useDispatch, useSelector} from "react-redux";
 
-function EditAccount(){
-    const {user, setUser} = useContext(UserContext)
+function EditAccount({onEdit}){
+    const user = useSelector((state) => state.user)
     const [username, setUsername] = useState(user.username)
     const [password, setPassword] = useState(user.password)
     const [name, setName] = useState(user.name)
+    console.log(onEdit)
+
+    const dispatch = useDispatch()
 
     //Changes User account
     function handleSubmit(){
@@ -25,7 +28,7 @@ function EditAccount(){
             body: JSON.stringify(updatedUser)
         })
         .then(res => res.json())
-        .then(data => setUser(data))
+        .then(data => dispatch({type: "login", payload: data}))
     }
     /********************** */
 

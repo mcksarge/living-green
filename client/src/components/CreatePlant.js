@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { UserContext } from "./Contexts/UserContext";
+import {useSelector} from 'react-redux';
 
 function CreatePlant({climates, addPlant}) {
   const [show, setShow] = useState(false);
@@ -15,7 +15,7 @@ function CreatePlant({climates, addPlant}) {
   const [checked, setChecked] = useState(false)
   const [errors, setErrors] = useState([])
 
-  const {user} = useContext(UserContext)
+  const user = useSelector((state) => state.user)
 
   // Shows or hides the popup window
   const handleClose = () => {

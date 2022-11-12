@@ -6,7 +6,6 @@ import Modal from 'react-bootstrap/Modal';
 function UserPlantCard({onDelete, userPlant}) {
     const [show, setShow] = useState(false);
     const plant = userPlant.plant
-    // console.log(userPlant)
 
     // Shows or hides the popup window
     const handleClose = () => setShow(false);

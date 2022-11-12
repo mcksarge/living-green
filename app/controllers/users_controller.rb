@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     skip_before_action :verify_authenticity_token
-    skip_before_action :authorize, only: [:create, :show]
+    skip_before_action :authorize, only: [:create, :show, :update]
 
     def create
         user = User.create(user_params)

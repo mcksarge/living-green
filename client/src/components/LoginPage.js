@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {NavLink} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
+
+
 
 
 function LoginPage({onLogin}) {
@@ -9,7 +9,7 @@ function LoginPage({onLogin}) {
     const [password, setPassword] = useState("")
     const [errors, setErrors] = useState([])
     const [createAccount, setCreateAccount] = useState(false)
-    const dispatch = useDispatch();
+
     
     
     // Handles Login

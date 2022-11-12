@@ -5,20 +5,25 @@ import Plants from './Plants';
 import Articles from './Articles';
 import LoginPage from './LoginPage';
 import EditAccount from './EditAccount';
-import { UserContext } from './Contexts/UserContext';
 import {Routes, Route} from 'react-router-dom';
 import {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 
 function App() {
   const [user, setUser] = useState(null)
   const [errors, setErrors] = useState([])
+  
+  const dispatch = useDispatch()
 
   // Auto Login
   useEffect(() => {
     fetch("/me")
     .then(res => {
       if (res.ok) {
-        res.json().then(data => setUser(data))
+        res.json().then(data => {
+          dispatch({type: "login", payload: data})
+          setUser(data)
+        })
       } else {
         res.json().then(errorData => setErrors(errorData.errors))
       }
@@ -28,16 +33,25 @@ function App() {
 
   //Handles login of user
   function handleLogin(user) {
+    console.log(user)
+    dispatch({type: "login", payload: user})
     setUser(user)
   }
   /**************** */
 
   //Handles logout of user
   function handleLogout() {
+    dispatch({type: "logout"})
     setUser(null)
   }
   /**************** */
 
+
+  // Edit User
+  function handleEdit(user){
+    setUser(user)
+  }
+  /******** */
 
   if(!user){
     return (
@@ -54,16 +68,14 @@ function App() {
   } else if (user) {
   return (
     <div className="App">
-      <UserContext.Provider value={{user}}>
         <NavBar onLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/plants" element={<Plants />} />
           <Route path="/articles" element={<Articles />} />
-          <Route path="/account" element={<EditAccount />} />
+          <Route path="/account" element={<EditAccount onEdit={handleEdit} />} />
         </Routes>
-        </UserContext.Provider>
     </div>
   );
   }

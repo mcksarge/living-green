@@ -1,12 +1,13 @@
-import {useContext, useEffect, useState} from 'react';
-import { UserContext } from './Contexts/UserContext';
+import {useEffect, useState} from 'react';
 import UserPlantCard from './UserPlantCard';
+import {useSelector} from 'react-redux';
 
 function Home() {
     const [plants, setPlants] = useState([])
     const [refreshPlants, setRefreshPlants] = useState(true)
 
-    const {user} = useContext(UserContext)
+    const user = useSelector((state) => state.user)
+    
 
     // Fetches users listed plants
     useEffect(() => {
