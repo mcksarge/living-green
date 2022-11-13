@@ -35,7 +35,6 @@ function App() {
   function handleLogin(user) {
     console.log(user)
     dispatch({type: "login", payload: user})
-    setUser(user)
   }
   /**************** */
 

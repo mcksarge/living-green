@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import {NavLink} from 'react-router-dom';
 
 
 
@@ -61,8 +61,10 @@ function LoginPage({onLogin}) {
     function handleShowLogin(){
         if(!createAccount){
             setCreateAccount(true)
+            setErrors([])
         } else {
             setCreateAccount(false)
+            setErrors([])
         }
     }
     /**************************** */
@@ -97,7 +99,7 @@ function LoginPage({onLogin}) {
                     {errors.length > 0 && (
                         <ul style={{ color: "red" }}>
                         {errors.map((error) => (
-                            <li key={error}>{error.login}</li>
+                            <li key={error}>{error}</li>
                         ))}
                         </ul>
                     )}
